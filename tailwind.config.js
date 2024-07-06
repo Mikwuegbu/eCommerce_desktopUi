@@ -9,6 +9,10 @@ export default {
 				forgottenBgImage: 'url("/src/assets/forgottenBgImage.png")',
 				resetBgImage: 'url("/src/assets/resetBgImage.png")',
 			},
+
+			fontFamily: {
+				poppins: ['Poppins', 'sans-serif'],
+			},
 		},
 	},
 	plugins: [],
