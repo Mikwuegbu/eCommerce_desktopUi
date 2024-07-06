@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { backArrow } from '../../assets/icons/icons';
 import AuthButton from '../../components/AuthButton';
 import FormInput from '../../components/FormInput';
@@ -25,10 +26,13 @@ const ForgotPassword = () => {
 					/>
 				</div>
 
-				<div className="font-medium flex items-center space-x-2 pt-52">
+				<Link
+					to="/auth/login"
+					className="font-medium flex items-center space-x-2 pt-52"
+				>
 					<img src={backArrow} alt={backArrow} className="h-4 w-4" />
 					<p className="text-base">Back</p>
-				</div>
+				</Link>
 			</div>
 		</div>
 	);
