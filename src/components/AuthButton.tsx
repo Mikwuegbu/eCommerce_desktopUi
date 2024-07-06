@@ -1,11 +1,6 @@
-interface authButton {
-	displayText: string;
-	className: string;
-	children?: React.ReactNode;
-	onClick?: React.EventHandler<React.MouseEvent<HTMLButtonElement>>;
-	disabled?: boolean;
-}
+import { authButton } from '../types/authTypes';
 
+//authentication Button component
 const AuthButton = ({ displayText, className, children }: authButton) => {
 	return (
 		<>

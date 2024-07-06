@@ -1,9 +1,6 @@
-interface formAttributes {
-	type: 'text' | 'email' | 'password';
-	className: string;
-	placeholder: string;
-}
+import { formAttributes } from '../types/authTypes';
 
+//authentication form Components
 const FormInput = ({ type, className, placeholder }: formAttributes) => {
 	return (
 		<>
