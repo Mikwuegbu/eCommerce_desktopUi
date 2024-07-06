@@ -6,7 +6,7 @@ import { appleIcon, googleIcon } from '../../assets/icons/icons';
 const CreateAccount = () => {
 	return (
 		<div className="my-24 mx-40 grid justify-center">
-			<div className="space-y-10">
+			<div className="space-y-12">
 				<h1 className="text-center font-medium text-5xl">Create account</h1>
 				<div className="">
 					<p className="font-medium text-sm">
@@ -40,7 +40,6 @@ const CreateAccount = () => {
 						</Link>
 					</div>
 				</div>
-
 				<div className="space-y-6">
 					<AuthButton
 						displayText="Sign up with Apple"
