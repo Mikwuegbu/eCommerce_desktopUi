@@ -12,6 +12,7 @@ export default {
 
 			fontFamily: {
 				poppins: ['Poppins', 'sans-serif'],
+				'Sofia-Sans': ['Sofia Sans', 'sans-serif'],
 			},
 		},
 	},
