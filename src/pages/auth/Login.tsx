@@ -33,7 +33,7 @@ const Login = () => {
 					/>
 					<div className="flex text-sm space-x-2 font-medium">
 						<p className="opacity-40">Don't have an account?</p>
-						<Link to="/auth/create" className="underline">
+						<Link to="/auth" className="underline">
 							Sign up
 						</Link>
 					</div>
