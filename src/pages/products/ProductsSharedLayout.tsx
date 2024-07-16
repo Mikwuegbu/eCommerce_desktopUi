@@ -67,10 +67,38 @@ const ProductsSharedLayout = () => {
 					</div>
 					<div className="flex justify-center place-items-center space-x-3">
 						<div className="flex space-x-10 font-poppins font-medium text-base">
-							<NavLink>Products</NavLink>
-							<NavLink>Story</NavLink>
-							<NavLink>Manufacturing</NavLink>
-							<NavLink>packaging</NavLink>
+							<NavLink
+								to="/products"
+								className={({ isActive }) =>
+									isActive ? 'border-b-2 border-black' : ''
+								}
+							>
+								Products
+							</NavLink>
+							<NavLink
+								to="/"
+								className={({ isActive }) =>
+									isActive ? 'border-b-2 border-black' : ''
+								}
+							>
+								Story
+							</NavLink>
+							<NavLink
+								to="/"
+								className={({ isActive }) =>
+									isActive ? 'border-b-2 border-black' : ''
+								}
+							>
+								Manufacturing
+							</NavLink>
+							<NavLink
+								to="/"
+								className={({ isActive }) =>
+									isActive ? 'border-b-2 border-black' : ''
+								}
+							>
+								packaging
+							</NavLink>
 						</div>
 						<div className="flex space-x-6">
 							<button>

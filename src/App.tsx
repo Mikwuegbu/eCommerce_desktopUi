@@ -42,7 +42,6 @@ const productsRoutes: RouteObject = {
 	children: [
 		{
 			index: true,
-			path: 'products',
 			element: <Product />,
 		},
 		{
