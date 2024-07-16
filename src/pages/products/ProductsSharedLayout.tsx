@@ -36,9 +36,9 @@ const ProductsSharedLayout = () => {
 				<div className="flex w-28 h-11">
 					<img src={logo} alt={logo} className="" />
 				</div>
-				<NavLink to="/" className="font-Sofia-Sans font-bold text-3xl flex">
+				<button className="font-Sofia-Sans font-bold text-3xl flex">
 					Explore
-				</NavLink>
+				</button>
 				<div className="flex flex-col space-y-6 font-poppins font-medium text-justify">
 					{exploreProducts.map((explore) => (
 						<button

@@ -11,7 +11,6 @@ import Login from './pages/auth/Login';
 import ProductsSharedLayout from './pages/products/ProductsSharedLayout';
 import SingleProduct from './pages/products/SingleProduct';
 import Product from './pages/products/Product';
-import ErrorPage from './pages/ErrorPage';
 
 const authRoutes: RouteObject = {
 	path: '/auth',
