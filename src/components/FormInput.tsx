@@ -4,7 +4,12 @@ import { formAttributes } from '../types/authTypes';
 const FormInput = ({ type, className, placeholder }: formAttributes) => {
 	return (
 		<>
-			<input type={type} className={className} placeholder={placeholder} />
+			<input
+				required
+				type={type}
+				className={className}
+				placeholder={placeholder}
+			/>
 		</>
 	);
 };
