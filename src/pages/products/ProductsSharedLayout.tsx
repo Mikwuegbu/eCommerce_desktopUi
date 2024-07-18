@@ -12,6 +12,8 @@ import { MdSportsMartialArts } from 'react-icons/md';
 import { IoChatbubble } from 'react-icons/io5';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import { CiSearch, CiUser } from 'react-icons/ci';
+import { useContext } from 'react';
+import { ExploreContext } from './Provider';
 
 interface Explore {
 	id: number;
@@ -30,18 +32,30 @@ const exploreProducts: Explore[] = [
 ];
 
 const ProductsSharedLayout = () => {
+	const exploreBtn = useContext(ExploreContext);
+
+	const handleClick = (btn: string) => {
+		exploreBtn?.dispatch({ type: btn, payload: btn });
+	};
+
+	console.log(exploreBtn?.location);
+
 	return (
 		<div className="grid grid-flow-col gap-x-9 px-12">
 			<div className="col-span-2 py-12 space-y-14 grid justify-center">
 				<div className="flex w-28 h-11">
 					<img src={logo} alt={logo} className="" />
 				</div>
-				<button className="font-Sofia-Sans font-bold text-3xl flex">
+				<button
+					onClick={() => handleClick('explore')}
+					className="font-Sofia-Sans font-bold text-3xl flex"
+				>
 					Explore
 				</button>
 				<div className="flex flex-col space-y-6 font-poppins font-medium text-justify">
 					{exploreProducts.map((explore) => (
 						<button
+							onClick={() => handleClick(explore.title)}
 							key={explore.id}
 							className="flex space-x-2.5 hover:font-normal"
 						>

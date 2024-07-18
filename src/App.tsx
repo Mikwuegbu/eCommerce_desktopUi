@@ -11,6 +11,7 @@ import Login from './pages/auth/Login';
 import ProductsSharedLayout from './pages/products/ProductsSharedLayout';
 import SingleProduct from './pages/products/SingleProduct';
 import Product from './pages/products/Product';
+import Provider from './pages/products/Provider';
 
 const authRoutes: RouteObject = {
 	path: '/auth',
@@ -37,7 +38,11 @@ const authRoutes: RouteObject = {
 
 const productsRoutes: RouteObject = {
 	path: '/products',
-	element: <ProductsSharedLayout />,
+	element: (
+		<Provider>
+			<ProductsSharedLayout />
+		</Provider>
+	),
 	children: [
 		{
 			index: true,
