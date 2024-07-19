@@ -36,26 +36,19 @@ type exploreContextType = {
 const exploreReducer: Reducer<exploreType, exploreAction> = (state, action) => {
 	switch (action.type) {
 		case 'explore':
-			return (action.payload = action.type);
 		case 'New in':
-			return (action.payload = action.type);
 		case 'Clothing':
-			return (action.payload = action.type);
 		case 'Shoes':
-			return (action.payload = action.type);
 		case 'Accessories':
-			return (action.payload = action.type);
 		case 'Activewear':
-			return (action.payload = action.type);
 		case 'Gifts & Living':
-			return (action.payload = action.type);
 		case 'Inspiration':
-			return (action.payload = action.type);
 			return action.payload;
 		default:
 			return state;
 	}
 };
+
 const Provider: FC<{ children: ReactNode }> = ({ children }) => {
 	//useReducer --with the initial state and action typeChecked
 	const [location, dispatch] = useReducer<Reducer<exploreType, exploreAction>>(

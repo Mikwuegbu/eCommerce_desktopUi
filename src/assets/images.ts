@@ -5,7 +5,7 @@ const model2 = '/model2.png';
 const model3 = '/model3.png';
 const model4 = '/model4.png';
 const model5 = '/model5.png';
-const model6 = '/model.png';
+const model6 = '/model6.png';
 const model7 = '/model.png';
 const model8 = '/model8.png';
 

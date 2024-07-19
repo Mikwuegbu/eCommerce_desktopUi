@@ -1,4 +1,11 @@
-import { banner1, banner2, model1, model2 } from '../../../assets/images';
+import {
+	banner1,
+	banner2,
+	model1,
+	model2,
+	model5,
+	model6,
+} from '../../../assets/images';
 
 const Explore = () => {
 	return (
@@ -40,16 +47,16 @@ const Explore = () => {
 					<div className="flex flex-col gap-y-3.5">
 						<div className="w-full h-44">
 							<img
-								src={banner1}
+								src={model5}
 								alt=""
-								className="w-full h-full object-cover rounded-2xl"
+								className="w-full h-full object-cover object-right-top rounded-2xl"
 							/>
 						</div>
-						<div className="w-full h-44">
+						<div className="relative w-full h-44">
 							<img
-								src={banner2}
+								src={model6}
 								alt=""
-								className="w-full h-full object-cover rounded-2xl"
+								className="w-full h-full object-cover object-right-top rounded-2xl"
 							/>
 						</div>
 					</div>

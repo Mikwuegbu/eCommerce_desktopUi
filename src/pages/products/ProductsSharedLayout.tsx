@@ -14,6 +14,7 @@ import { RiDeleteBin5Line } from 'react-icons/ri';
 import { CiSearch, CiUser } from 'react-icons/ci';
 import { useContext } from 'react';
 import { ExploreContext } from './Provider';
+import { Link } from 'react-router-dom';
 
 interface Explore {
 	id: number;
@@ -46,22 +47,24 @@ const ProductsSharedLayout = () => {
 				<div className="flex w-28 h-11">
 					<img src={logo} alt={logo} className="" />
 				</div>
-				<button
+				<Link
+					to="/products"
 					onClick={() => handleClick('explore')}
 					className="font-Sofia-Sans font-bold text-3xl flex"
 				>
 					Explore
-				</button>
+				</Link>
 				<div className="space-y-6 font-poppins font-medium text-justify">
 					{exploreProducts.map((explore) => (
-						<button
+						<Link
+							to="/products"
 							onClick={() => handleClick(explore.title)}
 							key={explore.id}
 							className="flex space-x-2.5 hover:font-normal"
 						>
 							{explore.icon}
 							<p className="text-nowrap">{explore.title}</p>
-						</button>
+						</Link>
 					))}
 				</div>
 				<div className="font-poppins font-medium flex space-x-2.5">
@@ -70,7 +73,7 @@ const ProductsSharedLayout = () => {
 				</div>
 			</div>
 			<div className="pt-14 grid justify-between">
-				<nav className="grid grid-flow-col justify-between">
+				<nav className="grid grid-flow-col justify-between place-items-center">
 					<div className="relative">
 						<CiSearch size={23} className="absolute top-2 left-0 right-0" />
 						<input
