@@ -41,8 +41,8 @@ const ProductsSharedLayout = () => {
 	console.log(exploreBtn?.location);
 
 	return (
-		<div className="grid grid-flow-col gap-x-9 px-12">
-			<div className="col-span-2 py-12 space-y-14 grid justify-center">
+		<div className="grid grid-flow-col gap-x-16 px-12">
+			<div className="py-12 grid grid-flow-row">
 				<div className="flex w-28 h-11">
 					<img src={logo} alt={logo} className="" />
 				</div>
@@ -52,7 +52,7 @@ const ProductsSharedLayout = () => {
 				>
 					Explore
 				</button>
-				<div className="flex flex-col space-y-6 font-poppins font-medium text-justify">
+				<div className="space-y-6 font-poppins font-medium text-justify">
 					{exploreProducts.map((explore) => (
 						<button
 							onClick={() => handleClick(explore.title)}
@@ -60,17 +60,17 @@ const ProductsSharedLayout = () => {
 							className="flex space-x-2.5 hover:font-normal"
 						>
 							{explore.icon}
-							<p>{explore.title}</p>
+							<p className="text-nowrap">{explore.title}</p>
 						</button>
 					))}
 				</div>
-				<div className="font-poppins font-medium flex space-x-2.5 pt-20">
+				<div className="font-poppins font-medium flex space-x-2.5">
 					<IoChatbubble size={22} />
 					<p>Help Center</p>
 				</div>
 			</div>
-			<div className="col-span-10 py-12">
-				<nav className="flex justify-between pr-8">
+			<div className="pt-14 grid justify-between">
+				<nav className="grid grid-flow-col justify-between">
 					<div className="relative">
 						<CiSearch size={23} className="absolute top-2 left-0 right-0" />
 						<input
@@ -124,7 +124,9 @@ const ProductsSharedLayout = () => {
 						</div>
 					</div>
 				</nav>
-				<Outlet />
+				<div className="overflow-hidden">
+					<Outlet />
+				</div>
 			</div>
 		</div>
 	);
