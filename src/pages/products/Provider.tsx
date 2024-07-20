@@ -12,7 +12,7 @@ export const ExploreContext = createContext<exploreContextType | undefined>(
 	undefined
 );
 
-export type exploreType =
+type exploreType =
 	| 'explore'
 	| 'new in'
 	| 'clothing'

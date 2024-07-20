@@ -9,7 +9,7 @@ import ForgotPassword from './pages/auth/ForgotPassword';
 import PasswordReset from './pages/auth/PasswordReset';
 import Login from './pages/auth/Login';
 import ProductsSharedLayout from './pages/products/ProductsSharedLayout';
-import SingleProduct from './pages/products/SingleProduct';
+import SingleProduct from './pages/products/subPages/SingleProduct';
 import Product from './pages/products/Product';
 import Provider from './pages/products/Provider';
 
@@ -61,8 +61,6 @@ const productsRoutes: RouteObject = {
 
 const routes = createBrowserRouter([authRoutes, productsRoutes]);
 
-function App() {
-	return <RouterProvider router={routes} />;
-}
+const App = () => <RouterProvider router={routes} />;
 
 export default App;
