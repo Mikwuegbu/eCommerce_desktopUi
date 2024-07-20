@@ -61,6 +61,10 @@ const productsRoutes: RouteObject = {
 
 const routes = createBrowserRouter([authRoutes, productsRoutes]);
 
-const App = () => <RouterProvider router={routes} />;
+const App = () => (
+	<div className='container mx-auto'>
+		<RouterProvider router={routes} />
+	</div>
+);
 
 export default App;
