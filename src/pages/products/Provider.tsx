@@ -6,7 +6,6 @@ import {
 	ReactNode,
 	FC,
 } from 'react';
-
 //context manager
 export const ExploreContext = createContext<exploreContextType | undefined>(
 	undefined
@@ -55,6 +54,7 @@ const Provider: FC<{ children: ReactNode }> = ({ children }) => {
 		exploreReducer,
 		'explore'
 	);
+
 	return (
 		<ExploreContext.Provider value={{ location, dispatch }}>
 			{children}

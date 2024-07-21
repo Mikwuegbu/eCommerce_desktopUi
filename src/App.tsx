@@ -52,19 +52,17 @@ const productsRoutes: RouteObject = {
 			path: ':productId',
 			element: <SingleProduct />,
 		},
-		{
-			path: 'singleProduct',
-			element: <SingleProduct />,
-		},
 	],
 };
 
 const routes = createBrowserRouter([authRoutes, productsRoutes]);
 
-const App = () => (
-	<div className='container mx-auto'>
-		<RouterProvider router={routes} />
-	</div>
-);
+const App = () => {
+	return (
+		<div className='container mx-auto'>
+			<RouterProvider router={routes} />
+		</div>
+	);
+};
 
 export default App;

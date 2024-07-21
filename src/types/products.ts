@@ -1,19 +1,16 @@
+type SpecType = {
+	key: string;
+	value: string | number;
+};
+
 export interface productsType {
 	id: number;
+	name: string;
 	displayName: string;
 	price: number;
 	image: string;
 	details: string;
-	specs: {
-		sku: number;
-		category?: string;
-		stock: string;
-		farm: string;
-		freshness: string;
-		buy_by: string;
-		delivery: string;
-		delivery_area: string;
-	};
+	specs: SpecType[];
 	rating: {
 		review_star: number;
 		custom_Num: number;
