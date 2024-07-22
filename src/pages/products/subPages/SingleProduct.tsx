@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { FaPlus, FaRegStar, FaStar } from 'react-icons/fa';
-import { ChangeEvent, useContext } from 'react';
+import { useContext } from 'react';
 import { ProductContext, QuantityContext } from '../Provider';
 
 const SingleProduct = () => {
@@ -21,11 +21,6 @@ const SingleProduct = () => {
 		return [...filledStars, ...unfilledStars];
 	};
 
-	//handle Selections
-	const handleSelect = (e: ChangeEvent<HTMLSelectElement>) => {
-		setQuantity!(parseInt(e.target.value));
-	};
-
 	//add to cartItems
 	const addToCart = (id: number) => {
 		const checkCart = products?.cartItems!.find((items) => items.id === id);
@@ -37,7 +32,7 @@ const SingleProduct = () => {
 		}
 	};
 
-	console.log(quantity);
+	console.log(products?.cartItems);
 
 	return (
 		<div className='grid h-[740px] mx-8 pt-16 gap-5'>
@@ -81,10 +76,12 @@ const SingleProduct = () => {
 										</p>
 										<div className='flex place-items-center space-x-8'>
 											<div className='flex space-x-2.5 max-w-min border-2 px-4 py-3 rounded-2xl bg-gray-100'>
-												{/* TODO adda counter */}
 												<span className='border-r-2 pr-4'>{quantity}</span>
 												<select
-													onChange={handleSelect}
+													onChange={(e) => {
+														setQuantity!(parseInt(e.target.value));
+														product.quantity = parseInt(e.target.value);
+													}}
 													name='num_of_items'
 													className='outline-none bg-gray-100 px-2'
 												>

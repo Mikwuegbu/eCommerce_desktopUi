@@ -8,6 +8,7 @@ export interface productsType {
 	name: string;
 	displayName: string;
 	price: number;
+	quantity: number;
 	image: string;
 	details: string;
 	specs: SpecType[];
