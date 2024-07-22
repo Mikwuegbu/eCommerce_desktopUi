@@ -59,12 +59,10 @@ const billingRoutes: RouteObject = {
 
 const routes = createBrowserRouter([authRoutes, productsRoutes, billingRoutes]);
 
-const App = () => {
-	return (
-		<Provider>
-			<RouterProvider router={routes} />
-		</Provider>
-	);
-};
+const App = () => (
+	<Provider>
+		<RouterProvider router={routes} />
+	</Provider>
+);
 
 export default App;

@@ -1,11 +1,13 @@
 import { useParams } from 'react-router-dom';
 import { FaPlus, FaRegStar, FaStar } from 'react-icons/fa';
-import { useContext } from 'react';
-import { ProductContext } from '../Provider';
+import { ChangeEvent, useContext } from 'react';
+import { ProductContext, QuantityContext } from '../Provider';
 
 const SingleProduct = () => {
 	const { productId } = useParams();
 	const products = useContext(ProductContext);
+	const quantity = useContext(QuantityContext)?.quantity;
+	const setQuantity = useContext(QuantityContext)?.setQuantity;
 	const product = products?.products;
 
 	//rendering the Rating
@@ -19,6 +21,11 @@ const SingleProduct = () => {
 		return [...filledStars, ...unfilledStars];
 	};
 
+	//handle Selections
+	const handleSelect = (e: ChangeEvent<HTMLSelectElement>) => {
+		setQuantity!(parseInt(e.target.value));
+	};
+
 	//add to cartItems
 	const addToCart = (id: number) => {
 		const checkCart = products?.cartItems!.find((items) => items.id === id);
@@ -30,7 +37,7 @@ const SingleProduct = () => {
 		}
 	};
 
-	console.log(products?.cartItems);
+	console.log(quantity);
 
 	return (
 		<div className='grid h-[740px] mx-8 pt-16 gap-5'>
@@ -75,15 +82,18 @@ const SingleProduct = () => {
 										<div className='flex place-items-center space-x-8'>
 											<div className='flex space-x-2.5 max-w-min border-2 px-4 py-3 rounded-2xl bg-gray-100'>
 												{/* TODO adda counter */}
-												<span className='border-r-2 pr-4'></span>
+												<span className='border-r-2 pr-4'>{quantity}</span>
 												<select
+													onChange={handleSelect}
 													name='num_of_items'
 													className='outline-none bg-gray-100 px-2'
 												>
-													<option defaultValue={1}>PCs</option>
-													<option value=''>2</option>
-													<option value=''>3</option>
-													<option value=''>4</option>
+													<option defaultValue={1} value={1}>
+														PCs
+													</option>
+													<option value='2'>2 Pcs</option>
+													<option value='3'>3 Pcs</option>
+													<option value='4'>4 Pcs</option>
 												</select>
 											</div>
 											<button

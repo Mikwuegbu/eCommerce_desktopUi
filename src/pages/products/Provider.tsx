@@ -19,6 +19,10 @@ export const ProductContext = createContext<productContextType | undefined>(
 	undefined
 );
 
+export const QuantityContext = createContext<quantityContextType | undefined>(
+	undefined
+);
+
 type exploreType =
 	| 'explore'
 	| 'new in'
@@ -33,16 +37,22 @@ type exploreType =
 // reducer Action type
 type exploreAction = { type: exploreType; payload: exploreType };
 
+// context type --this is what is being provided
+type exploreContextType = {
+	location: string;
+	dispatch: Dispatch<exploreAction>;
+};
+
+// context type --this is what is being provided
 type productContextType = {
 	cartItems: productsType[] | undefined;
 	setCartItems: Dispatch<productsType[]>;
 	products: productsType[];
 };
 
-// context type --this is what is being provided
-type exploreContextType = {
-	location: string;
-	dispatch: Dispatch<exploreAction>;
+type quantityContextType = {
+	quantity: number;
+	setQuantity: Dispatch<number>;
 };
 
 //Reducer --this is the the reducer function
@@ -70,12 +80,15 @@ const Provider: FC<{ children: ReactNode }> = ({ children }) => {
 	);
 	const [cartItems, setCartItems] = useState<productsType[]>([]);
 	const products = data.products;
+	const [quantity, setQuantity] = useState<number>(1);
 
 	return (
 		<ProductContext.Provider value={{ products, cartItems, setCartItems }}>
-			<ExploreContext.Provider value={{ location, dispatch }}>
-				{children}
-			</ExploreContext.Provider>
+			<QuantityContext.Provider value={{ quantity, setQuantity }}>
+				<ExploreContext.Provider value={{ location, dispatch }}>
+					{children}
+				</ExploreContext.Provider>
+			</QuantityContext.Provider>
 		</ProductContext.Provider>
 	);
 };
