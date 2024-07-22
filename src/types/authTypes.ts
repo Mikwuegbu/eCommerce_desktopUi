@@ -9,7 +9,8 @@ export interface authButton {
 
 //authentication formInput types
 export interface formAttributes {
-	type: 'text' | 'email' | 'password';
+	type: string;
 	className: string;
 	placeholder: string;
+	id?: string;
 }

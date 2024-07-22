@@ -32,8 +32,6 @@ const SingleProduct = () => {
 		}
 	};
 
-	console.log(products?.cartItems);
-
 	return (
 		<div className='grid h-[740px] mx-8 pt-16 gap-5'>
 			{product!
