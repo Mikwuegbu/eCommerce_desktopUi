@@ -12,6 +12,7 @@ import ProductsSharedLayout from './pages/products/ProductsSharedLayout';
 import SingleProduct from './pages/products/subPages/SingleProduct';
 import Product from './pages/products/Product';
 import Provider from './pages/products/Provider';
+import Billing from './pages/billing/Billing';
 
 const authRoutes: RouteObject = {
 	path: '/auth',
@@ -38,11 +39,7 @@ const authRoutes: RouteObject = {
 
 const productsRoutes: RouteObject = {
 	path: '/products',
-	element: (
-		<Provider>
-			<ProductsSharedLayout />
-		</Provider>
-	),
+	element: <ProductsSharedLayout />,
 	children: [
 		{
 			index: true,
@@ -55,13 +52,18 @@ const productsRoutes: RouteObject = {
 	],
 };
 
-const routes = createBrowserRouter([authRoutes, productsRoutes]);
+const billingRoutes: RouteObject = {
+	path: '/billing',
+	element: <Billing />,
+};
+
+const routes = createBrowserRouter([authRoutes, productsRoutes, billingRoutes]);
 
 const App = () => {
 	return (
-		<div className='container mx-auto'>
+		<Provider>
 			<RouterProvider router={routes} />
-		</div>
+		</Provider>
 	);
 };
 

@@ -6,14 +6,14 @@ import {
 	GiCutDiamond,
 	GiPresent,
 	GiRunningShoe,
+	GiShoppingCart,
 } from 'react-icons/gi';
 import { BsHandbagFill } from 'react-icons/bs';
 import { MdSportsMartialArts } from 'react-icons/md';
 import { IoChatbubble } from 'react-icons/io5';
-import { RiDeleteBin5Line } from 'react-icons/ri';
 import { CiSearch, CiUser } from 'react-icons/ci';
 import { useContext } from 'react';
-import { ExploreContext } from './Provider';
+import { ExploreContext, ProductContext } from './Provider';
 import { Link } from 'react-router-dom';
 
 interface Explore {
@@ -34,6 +34,7 @@ const exploreProducts: Explore[] = [
 
 const ProductsSharedLayout = () => {
 	const exploreBtn = useContext(ExploreContext);
+	const cartItems = useContext(ProductContext)?.cartItems;
 
 	const handleClick = (btn: string) => {
 		exploreBtn?.dispatch({ type: btn, payload: btn });
@@ -42,50 +43,50 @@ const ProductsSharedLayout = () => {
 	console.log(exploreBtn?.location);
 
 	return (
-		<div className="grid grid-flow-col gap-x-16 px-12">
-			<div className="py-12 grid grid-flow-row">
-				<div className="flex w-28 h-11">
-					<img src={logo} alt={logo} className="" />
+		<div className='grid grid-flow-col gap-x-16 px-12'>
+			<div className='py-12 grid grid-flow-row'>
+				<div className='flex w-28 h-11'>
+					<img src={logo} alt={logo} className='' />
 				</div>
 				<Link
-					to="/products"
+					to='/products'
 					onClick={() => handleClick('explore')}
-					className="font-Sofia-Sans font-bold text-3xl flex"
+					className='font-Sofia-Sans font-bold text-3xl flex'
 				>
 					Explore
 				</Link>
-				<div className="space-y-6 font-poppins font-medium text-justify">
+				<div className='space-y-6 font-poppins font-medium text-justify'>
 					{exploreProducts.map((explore) => (
 						<Link
-							to="/products"
+							to='/products'
 							onClick={() => handleClick(explore.title)}
 							key={explore.id}
-							className="flex space-x-2.5 hover:font-normal"
+							className='flex space-x-2.5 hover:font-normal'
 						>
 							{explore.icon}
-							<p className="text-nowrap">{explore.title}</p>
+							<p className='text-nowrap'>{explore.title}</p>
 						</Link>
 					))}
 				</div>
-				<div className="font-poppins font-medium flex space-x-2.5">
+				<div className='font-poppins font-medium flex space-x-2.5'>
 					<IoChatbubble size={22} />
 					<p>Help Center</p>
 				</div>
 			</div>
-			<div className="pt-14 grid justify-between">
-				<nav className="grid grid-flow-col justify-between place-items-center">
-					<div className="relative">
-						<CiSearch size={23} className="absolute top-2 left-0 right-0" />
+			<div className='pt-14 grid justify-between'>
+				<nav className='grid grid-flow-col justify-between place-items-center'>
+					<div className='relative'>
+						<CiSearch size={23} className='absolute top-2 left-0 right-0' />
 						<input
-							type="text"
-							className="py-1.5 pl-7 outline-none focus:border-b-2"
-							placeholder="search store"
+							type='text'
+							className='py-1.5 pl-7 outline-none focus:border-b-2'
+							placeholder='search store'
 						/>
 					</div>
-					<div className="flex justify-center place-items-center space-x-3">
-						<div className="flex space-x-10 font-poppins font-medium text-base">
+					<div className='flex justify-center place-items-center space-x-3'>
+						<div className='flex space-x-10 font-poppins font-medium text-base'>
 							<NavLink
-								to="/products"
+								to='/products'
 								className={({ isActive }) =>
 									isActive ? 'border-b-2 border-black' : ''
 								}
@@ -93,7 +94,7 @@ const ProductsSharedLayout = () => {
 								Products
 							</NavLink>
 							<NavLink
-								to="/"
+								to='/'
 								className={({ isActive }) =>
 									isActive ? 'border-b-2 border-black' : ''
 								}
@@ -101,7 +102,7 @@ const ProductsSharedLayout = () => {
 								Story
 							</NavLink>
 							<NavLink
-								to="/"
+								to='/'
 								className={({ isActive }) =>
 									isActive ? 'border-b-2 border-black' : ''
 								}
@@ -109,7 +110,7 @@ const ProductsSharedLayout = () => {
 								Manufacturing
 							</NavLink>
 							<NavLink
-								to="/"
+								to='/'
 								className={({ isActive }) =>
 									isActive ? 'border-b-2 border-black' : ''
 								}
@@ -117,17 +118,18 @@ const ProductsSharedLayout = () => {
 								packaging
 							</NavLink>
 						</div>
-						<div className="flex space-x-6">
-							<button>
-								<RiDeleteBin5Line />
-							</button>
-							<button>
+						<div className='flex space-x-4 place-items-center'>
+							<Link to='/billing' className='flex space-x-1 place-items-center'>
+								<GiShoppingCart />{' '}
+								<p className='text-xs'>{cartItems?.length}</p>
+							</Link>
+							<Link to='/auth/login'>
 								<CiUser />
-							</button>
+							</Link>
 						</div>
 					</div>
 				</nav>
-				<div className="overflow-hidden">
+				<div className='overflow-hidden'>
 					<Outlet />
 				</div>
 			</div>

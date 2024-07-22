@@ -5,9 +5,17 @@ import {
 	Reducer,
 	ReactNode,
 	FC,
+	useState,
 } from 'react';
+import { productsType } from '../../types/products';
+import data from './products.json';
+
 //context manager
 export const ExploreContext = createContext<exploreContextType | undefined>(
+	undefined
+);
+
+export const ProductContext = createContext<productContextType | undefined>(
 	undefined
 );
 
@@ -24,6 +32,12 @@ type exploreType =
 
 // reducer Action type
 type exploreAction = { type: exploreType; payload: exploreType };
+
+type productContextType = {
+	cartItems: productsType[] | undefined;
+	setCartItems: Dispatch<productsType[]>;
+	products: productsType[];
+};
 
 // context type --this is what is being provided
 type exploreContextType = {
@@ -54,11 +68,15 @@ const Provider: FC<{ children: ReactNode }> = ({ children }) => {
 		exploreReducer,
 		'explore'
 	);
+	const [cartItems, setCartItems] = useState<productsType[]>([]);
+	const products = data.products;
 
 	return (
-		<ExploreContext.Provider value={{ location, dispatch }}>
-			{children}
-		</ExploreContext.Provider>
+		<ProductContext.Provider value={{ products, cartItems, setCartItems }}>
+			<ExploreContext.Provider value={{ location, dispatch }}>
+				{children}
+			</ExploreContext.Provider>
+		</ProductContext.Provider>
 	);
 };
 

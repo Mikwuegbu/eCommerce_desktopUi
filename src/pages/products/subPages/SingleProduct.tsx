@@ -1,13 +1,12 @@
 import { useParams } from 'react-router-dom';
-import data from '../products.json';
-import { productsType } from '../../../types/products';
 import { FaPlus, FaRegStar, FaStar } from 'react-icons/fa';
-import { useState } from 'react';
+import { useContext } from 'react';
+import { ProductContext } from '../Provider';
 
 const SingleProduct = () => {
-	const product: productsType[] = data.products;
 	const { productId } = useParams();
-	const [numOfItems, setNumofItems] = useState<number>(1);
+	const products = useContext(ProductContext);
+	const product = products?.products;
 
 	//rendering the Rating
 	const renderRating = (rating: number): JSX.Element[] => {
@@ -20,12 +19,25 @@ const SingleProduct = () => {
 		return [...filledStars, ...unfilledStars];
 	};
 
+	//add to cartItems
+	const addToCart = (id: number) => {
+		const checkCart = products?.cartItems!.find((items) => items.id === id);
+		if (checkCart?.id !== id) {
+			const newItem = products?.products.find((item) => item.id === id);
+			if (newItem) {
+				products?.setCartItems([...products.cartItems!, newItem]);
+			}
+		}
+	};
+
+	console.log(products?.cartItems);
+
 	return (
 		<div className='grid h-[740px] mx-8 pt-16 gap-5'>
-			{product
+			{product!
 				.filter((product) => product.id.toString() === productId)
 				.map((product) => (
-					<div className='flex space-x-16 max-w-max'>
+					<div key={product.id} className='flex space-x-16 max-w-max'>
 						<div className='overflow-hidden min-w-max'>
 							<img
 								src={product.image}
@@ -62,20 +74,22 @@ const SingleProduct = () => {
 										</p>
 										<div className='flex place-items-center space-x-8'>
 											<div className='flex space-x-2.5 max-w-min border-2 px-4 py-3 rounded-2xl bg-gray-100'>
-												<span className='border-r-2 pr-4'>{numOfItems}</span>
+												{/* TODO adda counter */}
+												<span className='border-r-2 pr-4'></span>
 												<select
 													name='num_of_items'
-													className='outline-none bg-gray-100'
+													className='outline-none bg-gray-100 px-2'
 												>
-													<option disabled selected value=''>
-														Pcs
-													</option>
-													<option value=''>1</option>
+													<option defaultValue={1}>PCs</option>
 													<option value=''>2</option>
 													<option value=''>3</option>
+													<option value=''>4</option>
 												</select>
 											</div>
-											<button className='flex place-items-center space-x-1.5 bg-black text-white py-3 px-4 rounded-2xl'>
+											<button
+												onClick={() => addToCart(product.id)}
+												className='active:bg-[#000000c2] flex place-items-center space-x-1.5 bg-black text-white py-3 px-4 rounded-2xl'
+											>
 												<FaPlus /> <span>Add to cart</span>
 											</button>
 										</div>
@@ -95,7 +109,7 @@ const SingleProduct = () => {
 										<h1 className='font-medium text-lg'>Origins</h1>
 										<p className='py-4'>
 											We work hard to ensure that the fruit and vegetables we
-											sell are fresh and high in quality. If we don’t grow them
+											sell are fresh and high in quality. If we don't grow them
 											ourselves, we source them from carefully chosen suppliers,
 											preferring to buy locally whenever possible.
 										</p>
