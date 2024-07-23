@@ -60,7 +60,7 @@ const Billing = () => {
 						<Link to='/billing' className='flex space-x-1 place-items-center'>
 							<GiShoppingCart /> <p className='text-xs'>{cartItems?.length}</p>
 						</Link>
-						<Link to='/auth/login'>
+						<Link to='/login'>
 							<CiUser />
 						</Link>
 					</div>

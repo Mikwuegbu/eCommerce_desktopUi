@@ -23,22 +23,22 @@ const authRoutes: RouteObject = {
 			element: <CreateAccount />,
 		},
 		{
-			path: 'login',
+			path: '/login',
 			element: <Login />,
 		},
 		{
-			path: 'forgotten',
+			path: '/forgotten',
 			element: <ForgotPassword />,
 		},
 		{
-			path: 'reset',
+			path: '/reset',
 			element: <PasswordReset />,
 		},
 	],
 };
 
 const productsRoutes: RouteObject = {
-	path: 'products',
+	path: '/products',
 	element: <ProductsSharedLayout />,
 	children: [
 		{
@@ -46,14 +46,14 @@ const productsRoutes: RouteObject = {
 			element: <Product />,
 		},
 		{
-			path: ':productId',
+			path: '/:productId',
 			element: <SingleProduct />,
 		},
 	],
 };
 
 const billingRoutes: RouteObject = {
-	path: 'billing',
+	path: '/billing',
 	element: <Billing />,
 };
 
