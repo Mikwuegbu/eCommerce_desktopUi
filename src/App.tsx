@@ -46,7 +46,7 @@ const productsRoutes: RouteObject = {
 			element: <Product />,
 		},
 		{
-			path: '/:productId',
+			path: ':productId',
 			element: <SingleProduct />,
 		},
 	],
