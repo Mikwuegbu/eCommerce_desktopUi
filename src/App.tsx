@@ -15,7 +15,7 @@ import Provider from './pages/products/Provider';
 import Billing from './pages/billing/Billing';
 
 const authRoutes: RouteObject = {
-	path: '/auth',
+	path: '/',
 	element: <AuthLayout />,
 	children: [
 		{

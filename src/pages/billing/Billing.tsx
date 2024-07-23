@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import FormInput from '../../components/FormInput';
 
 const Billing = () => {
-	const checkOutItems = useContext(ProductContext)?.cartItems;
+	//const checkOutItems = useContext(ProductContext)?.cartItems;
 	const cartItems = useContext(ProductContext)?.cartItems;
 
 	return (

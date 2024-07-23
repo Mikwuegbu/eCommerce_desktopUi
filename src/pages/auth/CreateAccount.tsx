@@ -35,7 +35,7 @@ const CreateAccount = () => {
 					</form>
 					<div className='flex items-center font-medium text-sm space-x-2 pt-3'>
 						<p className='opacity-40'>Already have an account?</p>
-						<Link to='/auth/login' className='underline'>
+						<Link to='/login' className='underline'>
 							Login
 						</Link>
 					</div>
