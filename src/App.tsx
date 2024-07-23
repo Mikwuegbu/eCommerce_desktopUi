@@ -38,7 +38,7 @@ const authRoutes: RouteObject = {
 };
 
 const productsRoutes: RouteObject = {
-	path: '/products',
+	path: 'products',
 	element: <ProductsSharedLayout />,
 	children: [
 		{
@@ -53,7 +53,7 @@ const productsRoutes: RouteObject = {
 };
 
 const billingRoutes: RouteObject = {
-	path: '/billing',
+	path: 'billing',
 	element: <Billing />,
 };
 
