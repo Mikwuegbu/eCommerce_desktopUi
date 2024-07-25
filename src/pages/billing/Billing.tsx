@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { ChangeEvent, useContext } from 'react';
 import { ProductContext, QuantityContext } from '../products/Provider';
 import { CiGrid32, CiHeart, CiSearch, CiUser } from 'react-icons/ci';
 import { NavLink } from 'react-router-dom';
@@ -14,6 +14,26 @@ const Billing = () => {
 	const quantity = useContext(QuantityContext)?.quantity;
 	const setQuantity = useContext(QuantityContext)?.setQuantity;
 	const initialVal = 0;
+
+	// const handleQuantity = (e: ChangeEvent<HTMLSelectElement>, value: number) => {
+	// 	cartItems?.map((item) =>
+	// 		item.id === value
+	// 			? setQuantity!((item.quantity = parseInt!(e.target.value)))
+	// 			: setQuantity!((item.quantity = 1))
+	// 	);
+	// };
+
+	const handleQuantity = (
+		e: ChangeEvent<HTMLSelectElement>,
+		itemId: number
+	) => {
+		// Update the cart items with the new quantity for the specific item
+		cartItems!.map((item) =>
+			item.id === itemId
+				? { ...item, quantity: setQuantity!(parseInt(e.target.value)) }
+				: item
+		);
+	};
 
 	return (
 		<div className='px-14 pb-14'>
@@ -233,7 +253,7 @@ const Billing = () => {
 						</p>
 					</div>
 					<div>
-						{cartItems?.map((product) => {
+						{cartItems?.map((product, index) => {
 							return (
 								<div
 									key={product.id}
@@ -273,10 +293,7 @@ const Billing = () => {
 												<div className='flex space-x-2.5 max-w-min border-2 px-2 place-items-center py-1 rounded-2xl bg-gray-100'>
 													<span className='border-r-2 pr-4'>{quantity}</span>
 													<select
-														onChange={(e) => {
-															setQuantity!(parseInt(e.target.value));
-															product.quantity = parseInt(e.target.value);
-														}}
+														onChange={(e) => handleQuantity(e, product.id)}
 														name='num_of_items'
 														className='outline-none bg-gray-100 px-2'
 													>
