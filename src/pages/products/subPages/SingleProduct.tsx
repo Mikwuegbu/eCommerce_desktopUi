@@ -3,6 +3,16 @@ import { FaPlus, FaRegStar, FaStar } from 'react-icons/fa';
 import { useContext } from 'react';
 import { ProductContext, QuantityContext } from '../Provider';
 
+export const renderRating = (rating: number): JSX.Element[] => {
+	const filledStars = Array.from(Array(rating), () => (
+		<FaStar fill='#FDBC15' size={20} />
+	));
+	const unfilledStars = Array.from(Array(5 - rating), () => (
+		<FaRegStar fill='#D1D1D1' size={20} />
+	));
+	return [...filledStars, ...unfilledStars];
+};
+
 const SingleProduct = () => {
 	const { productId } = useParams();
 	const products = useContext(ProductContext);
@@ -11,15 +21,6 @@ const SingleProduct = () => {
 	const product = products?.products;
 
 	//rendering the Rating
-	const renderRating = (rating: number): JSX.Element[] => {
-		const filledStars = Array.from(Array(rating), () => (
-			<FaStar fill='#FDBC15' size={20} />
-		));
-		const unfilledStars = Array.from(Array(5 - rating), () => (
-			<FaRegStar fill='#D1D1D1' size={20} />
-		));
-		return [...filledStars, ...unfilledStars];
-	};
 
 	//add to cartItems
 	const addToCart = (id: number) => {
