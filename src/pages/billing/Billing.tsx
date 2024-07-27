@@ -1,12 +1,12 @@
-import { ChangeEvent, useContext } from 'react';
-import { ProductContext, QuantityContext } from '../products/Provider';
-import { CiGrid32, CiHeart, CiSearch, CiUser } from 'react-icons/ci';
-import { NavLink } from 'react-router-dom';
-import { GiShoppingCart } from 'react-icons/gi';
-import { Link } from 'react-router-dom';
-import FormInput from '../../components/FormInput';
-import { RiCloseLargeFill } from 'react-icons/ri';
-import { renderRating } from '../products/subPages/SingleProduct';
+import { ChangeEvent, useContext } from "react";
+import { ProductContext, QuantityContext } from "../products/Provider";
+import { CiGrid32, CiHeart, CiSearch, CiUser } from "react-icons/ci";
+import { NavLink } from "react-router-dom";
+import { GiShoppingCart } from "react-icons/gi";
+import { Link } from "react-router-dom";
+import FormInput from "../../components/FormInput";
+import { RiCloseLargeFill } from "react-icons/ri";
+import { renderRating } from "../products/subPages/SingleProduct";
 
 const Billing = () => {
 	//const checkOutItems = useContext(ProductContext)?.cartItems;
@@ -37,7 +37,7 @@ const Billing = () => {
 						<NavLink
 							to='/products'
 							className={({ isActive }) =>
-								isActive ? 'border-b-2 border-black' : ''
+								isActive ? "border-b-2 border-black" : ""
 							}
 						>
 							Products
@@ -45,7 +45,7 @@ const Billing = () => {
 						<NavLink
 							to='/'
 							className={({ isActive }) =>
-								isActive ? 'border-b-2 border-black' : ''
+								isActive ? "border-b-2 border-black" : ""
 							}
 						>
 							Story
@@ -53,7 +53,7 @@ const Billing = () => {
 						<NavLink
 							to='/'
 							className={({ isActive }) =>
-								isActive ? 'border-b-2 border-black' : ''
+								isActive ? "border-b-2 border-black" : ""
 							}
 						>
 							Manufacturing
@@ -61,7 +61,7 @@ const Billing = () => {
 						<NavLink
 							to='/'
 							className={({ isActive }) =>
-								isActive ? 'border-b-2 border-black' : ''
+								isActive ? "border-b-2 border-black" : ""
 							}
 						>
 							packaging
@@ -239,7 +239,7 @@ const Billing = () => {
 						</p>
 					</div>
 					<div>
-						{cartItems?.map((product, index) => {
+						{cartItems?.map((product) => {
 							return (
 								<div
 									key={product.id}
