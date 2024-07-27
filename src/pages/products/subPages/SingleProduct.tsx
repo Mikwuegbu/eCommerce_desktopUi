@@ -1,7 +1,7 @@
-import { useParams } from 'react-router-dom';
-import { FaPlus, FaRegStar, FaStar } from 'react-icons/fa';
-import { useContext } from 'react';
-import { ProductContext, QuantityContext } from '../Provider';
+import { useParams } from "react-router-dom";
+import { FaPlus, FaRegStar, FaStar } from "react-icons/fa";
+import { useContext } from "react";
+import { ProductContext, QuantityContext } from "../Provider";
 
 export const renderRating = (rating: number): JSX.Element[] => {
 	const filledStars = Array.from(Array(rating), () => (
@@ -105,7 +105,7 @@ const SingleProduct = () => {
 											Description
 										</button>
 										<button className='w-full text-justify hover:border-b-[2.5px] pb-4 border-[#6A983C]'>
-											Reviews
+											Review
 										</button>
 										<button className='w-full text-justify hover:border-b-[2.5px] pb-4 border-[#6A983C]'>
 											Question
