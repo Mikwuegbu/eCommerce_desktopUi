@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
-import { useContext } from 'react';
-import { ProductContext } from '../Provider';
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { ProductContext } from "../Provider";
 
 const Accessories = () => {
 	const products = useContext(ProductContext);
