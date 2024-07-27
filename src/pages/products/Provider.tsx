@@ -6,9 +6,9 @@ import {
 	ReactNode,
 	FC,
 	useState,
-} from 'react';
-import { productsType } from '../../types/products';
-import data from './products.json';
+} from "react";
+import { productsType } from "../../types/products";
+import data from "./products.json";
 
 //context manager
 export const ExploreContext = createContext<exploreContextType | undefined>(
@@ -24,14 +24,14 @@ export const QuantityContext = createContext<quantityContextType | undefined>(
 );
 
 type exploreType =
-	| 'explore'
-	| 'new in'
-	| 'clothing'
-	| 'shoes'
-	| 'accessories'
-	| 'activewear'
-	| 'gifts'
-	| 'inspiration'
+	| "explore"
+	| "new in"
+	| "clothing"
+	| "shoes"
+	| "accessories"
+	| "activewear"
+	| "gifts"
+	| "inspiration"
 	| string; // For dynamic locations
 
 // reducer Action type
@@ -58,14 +58,14 @@ type quantityContextType = {
 //Reducer --this is the the reducer function
 const exploreReducer: Reducer<exploreType, exploreAction> = (state, action) => {
 	switch (action.type) {
-		case 'explore':
-		case 'New in':
-		case 'Clothing':
-		case 'Shoes':
-		case 'Accessories':
-		case 'Activewear':
-		case 'Gifts & Living':
-		case 'Inspiration':
+		case "explore":
+		case "New in":
+		case "Clothing":
+		case "Shoes":
+		case "Accessories":
+		case "Activewear":
+		case "Gifts & Living":
+		case "Inspiration":
 			return action.payload;
 		default:
 			return state;
@@ -76,7 +76,7 @@ const Provider: FC<{ children: ReactNode }> = ({ children }) => {
 	//useReducer --with the initial state and action typeChecked
 	const [location, dispatch] = useReducer<Reducer<exploreType, exploreAction>>(
 		exploreReducer,
-		'explore'
+		"explore"
 	);
 	const [cartItems, setCartItems] = useState<productsType[]>([]);
 	const products = data.products;
