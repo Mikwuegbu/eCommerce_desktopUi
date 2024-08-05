@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
-import AuthButton from '../../components/AuthButton';
-import FormInput from '../../components/FormInput';
-import { appleIcon, googleIcon } from '../../assets/icons/icons';
+import { Link } from "react-router-dom";
+import AuthButton from "../../../components/AuthButton";
+import FormInput from "../../../components/FormInput";
+import { appleIcon, googleIcon } from "../../../assets/icons/icons";
 
 const CreateAccount = () => {
 	return (

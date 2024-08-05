@@ -8,7 +8,7 @@ import {
 	useState,
 } from "react";
 import { productsType } from "../../types/products";
-import data from "./products.json";
+import data from "../../utils/products.json";
 
 //context manager
 export const ExploreContext = createContext<exploreContextType | undefined>(

@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
-import { backArrow } from '../../assets/icons/icons';
-import AuthButton from '../../components/AuthButton';
-import FormInput from '../../components/FormInput';
+import { Link } from "react-router-dom";
+import { backArrow } from "../../../assets/icons/icons";
+import AuthButton from "../../../components/AuthButton";
+import FormInput from "../../../components/FormInput";
 
 const ForgotPassword = () => {
 	return (

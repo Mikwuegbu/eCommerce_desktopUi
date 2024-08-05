@@ -1,5 +1,5 @@
-import { Outlet, useLocation } from 'react-router-dom';
-import { arrowLeft, arrowRight } from '../../assets/icons/icons';
+import { Outlet, useLocation } from "react-router-dom";
+import { arrowLeft, arrowRight } from "../assets/icons/icons";
 
 const AuthLayout = () => {
 	// Making the layout Background Dynamic
@@ -8,16 +8,16 @@ const AuthLayout = () => {
 	// Getting the background color from the location object
 	const bgImage = (): string => {
 		switch (location.pathname) {
-			case '/auth/create':
-				return 'bg-createBgImage';
-			case '/auth/login':
-				return 'bg-welcomeBgImage';
-			case '/auth/forgotten':
-				return 'bg-forgottenBgImage';
-			case '/auth/reset':
-				return 'bg-resetBgImage';
+			case "/auth/create":
+				return "bg-createBgImage";
+			case "/auth/login":
+				return "bg-welcomeBgImage";
+			case "/auth/forgotten":
+				return "bg-forgottenBgImage";
+			case "/auth/reset":
+				return "bg-resetBgImage";
 			default:
-				return 'bg-createBgImage';
+				return "bg-createBgImage";
 		}
 	};
 

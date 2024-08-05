@@ -1,20 +1,20 @@
-import { Outlet, NavLink } from 'react-router-dom';
-import { logo } from '../../assets/icons/icons';
-import { FcFlashOn } from 'react-icons/fc';
+import { Outlet, NavLink } from "react-router-dom";
+import { logo } from "../assets/icons/icons";
+import { FcFlashOn } from "react-icons/fc";
 import {
 	GiClothes,
 	GiCutDiamond,
 	GiPresent,
 	GiRunningShoe,
 	GiShoppingCart,
-} from 'react-icons/gi';
-import { BsHandbagFill } from 'react-icons/bs';
-import { MdSportsMartialArts } from 'react-icons/md';
-import { IoChatbubble } from 'react-icons/io5';
-import { CiSearch, CiUser } from 'react-icons/ci';
-import { useContext } from 'react';
-import { ExploreContext, ProductContext } from './Provider';
-import { Link } from 'react-router-dom';
+} from "react-icons/gi";
+import { BsHandbagFill } from "react-icons/bs";
+import { MdSportsMartialArts } from "react-icons/md";
+import { IoChatbubble } from "react-icons/io5";
+import { CiSearch, CiUser } from "react-icons/ci";
+import { useContext } from "react";
+import { ExploreContext, ProductContext } from "../pages/products/Provider";
+import { Link } from "react-router-dom";
 
 interface Explore {
 	id: number;
@@ -23,13 +23,13 @@ interface Explore {
 }
 
 const exploreProducts: Explore[] = [
-	{ id: 1, title: 'New in', icon: <FcFlashOn size={22} /> },
-	{ id: 2, title: 'Clothing', icon: <GiClothes size={22} /> },
-	{ id: 3, title: 'Shoes', icon: <GiRunningShoe size={22} /> },
-	{ id: 4, title: 'Accessories', icon: <BsHandbagFill size={22} /> },
-	{ id: 5, title: 'Activewear', icon: <MdSportsMartialArts size={22} /> },
-	{ id: 6, title: 'Gifts & Living', icon: <GiPresent size={22} /> },
-	{ id: 7, title: 'Inspiration', icon: <GiCutDiamond size={22} /> },
+	{ id: 1, title: "New in", icon: <FcFlashOn size={22} /> },
+	{ id: 2, title: "Clothing", icon: <GiClothes size={22} /> },
+	{ id: 3, title: "Shoes", icon: <GiRunningShoe size={22} /> },
+	{ id: 4, title: "Accessories", icon: <BsHandbagFill size={22} /> },
+	{ id: 5, title: "Activewear", icon: <MdSportsMartialArts size={22} /> },
+	{ id: 6, title: "Gifts & Living", icon: <GiPresent size={22} /> },
+	{ id: 7, title: "Inspiration", icon: <GiCutDiamond size={22} /> },
 ];
 
 const ProductsSharedLayout = () => {
@@ -50,7 +50,7 @@ const ProductsSharedLayout = () => {
 				</div>
 				<Link
 					to='/products'
-					onClick={() => handleClick('explore')}
+					onClick={() => handleClick("explore")}
 					className='font-Sofia-Sans font-bold text-3xl flex'
 				>
 					Explore
@@ -88,7 +88,7 @@ const ProductsSharedLayout = () => {
 							<NavLink
 								to='/products'
 								className={({ isActive }) =>
-									isActive ? 'border-b-2 border-black' : ''
+									isActive ? "border-b-2 border-black" : ""
 								}
 							>
 								Products
@@ -96,7 +96,7 @@ const ProductsSharedLayout = () => {
 							<NavLink
 								to='/'
 								className={({ isActive }) =>
-									isActive ? 'border-b-2 border-black' : ''
+									isActive ? "border-b-2 border-black" : ""
 								}
 							>
 								Story
@@ -104,7 +104,7 @@ const ProductsSharedLayout = () => {
 							<NavLink
 								to='/'
 								className={({ isActive }) =>
-									isActive ? 'border-b-2 border-black' : ''
+									isActive ? "border-b-2 border-black" : ""
 								}
 							>
 								Manufacturing
@@ -112,7 +112,7 @@ const ProductsSharedLayout = () => {
 							<NavLink
 								to='/'
 								className={({ isActive }) =>
-									isActive ? 'border-b-2 border-black' : ''
+									isActive ? "border-b-2 border-black" : ""
 								}
 							>
 								packaging
@@ -120,7 +120,7 @@ const ProductsSharedLayout = () => {
 						</div>
 						<div className='flex space-x-4 place-items-center'>
 							<Link to='/billing' className='flex space-x-1 place-items-center'>
-								<GiShoppingCart />{' '}
+								<GiShoppingCart />{" "}
 								<p className='text-xs'>{cartItems?.length}</p>
 							</Link>
 							<Link to='/auth/login'>
