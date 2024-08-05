@@ -4,7 +4,6 @@ import { CiGrid32, CiHeart, CiSearch, CiUser } from "react-icons/ci";
 import { NavLink } from "react-router-dom";
 import { GiShoppingCart } from "react-icons/gi";
 import { Link } from "react-router-dom";
-import FormInput from "../../components/FormInput";
 import { RiCloseLargeFill } from "react-icons/ri";
 import { renderRating } from "../products/subPages/SingleProduct";
 import BillingForm from "../../components/BillingForm";
