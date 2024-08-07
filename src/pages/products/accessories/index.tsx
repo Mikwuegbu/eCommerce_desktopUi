@@ -9,7 +9,7 @@ const Accessories = () => {
 	return (
 		<div className='grid grid-flow-col grid-rows-2 h-[760px] mx-8 pt-8 gap-x-6 gap-y-11 mb-8'>
 			{product!.map((product) => (
-				<Link to={product.id.toString()} key={product.id} className='relative'>
+				<Link to={`${product.id}`} key={product.id} className='relative'>
 					<div className='w-full h-80 overflow-hidden'>
 						<img
 							src={product.image}

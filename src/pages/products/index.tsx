@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import Explore from "./subPages/Explore";
+import Explore from "./explore";
 import { ExploreContext } from "./Provider";
-import Accessories from "./subPages/Accessories";
+import Accessories from "./accessories";
 
 const Product = () => {
 	const products = useContext(ExploreContext);

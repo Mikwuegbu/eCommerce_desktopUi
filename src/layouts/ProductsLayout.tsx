@@ -55,10 +55,10 @@ const ProductsSharedLayout = () => {
 				>
 					Explore
 				</Link>
-				<div className='space-y-6 font-poppins font-medium text-justify'>
+				<div className='space-y-6 font-poppins font-medium text-justify '>
 					{exploreProducts.map((explore) => (
 						<Link
-							to='/products'
+							to={`/products/${explore.title.toLowerCase()}`}
 							onClick={() => handleClick(explore.title)}
 							key={explore.id}
 							className='flex space-x-2.5 hover:font-normal'
@@ -73,8 +73,8 @@ const ProductsSharedLayout = () => {
 					<p>Help Center</p>
 				</div>
 			</div>
-			<div className='pt-14 grid justify-between'>
-				<nav className='grid grid-flow-col justify-between place-items-center'>
+			<div className='pt-14 grid justify-between '>
+				<nav className='grid grid-flow-col justify-between place-items-center '>
 					<div className='relative'>
 						<CiSearch size={23} className='absolute top-2 left-0 right-0' />
 						<input
@@ -83,41 +83,7 @@ const ProductsSharedLayout = () => {
 							placeholder='search store'
 						/>
 					</div>
-					<div className='flex justify-center place-items-center space-x-3'>
-						<div className='flex space-x-10 font-poppins font-medium text-base'>
-							<NavLink
-								to='/products'
-								className={({ isActive }) =>
-									isActive ? "border-b-2 border-black" : ""
-								}
-							>
-								Products
-							</NavLink>
-							<NavLink
-								to='/'
-								className={({ isActive }) =>
-									isActive ? "border-b-2 border-black" : ""
-								}
-							>
-								Story
-							</NavLink>
-							<NavLink
-								to='/'
-								className={({ isActive }) =>
-									isActive ? "border-b-2 border-black" : ""
-								}
-							>
-								Manufacturing
-							</NavLink>
-							<NavLink
-								to='/'
-								className={({ isActive }) =>
-									isActive ? "border-b-2 border-black" : ""
-								}
-							>
-								packaging
-							</NavLink>
-						</div>
+					<div className='flex justify-center place-items-center space-x-3 pr-8'>
 						<div className='flex space-x-4 place-items-center'>
 							<Link to='/billing' className='flex space-x-1 place-items-center'>
 								<GiShoppingCart />{" "}

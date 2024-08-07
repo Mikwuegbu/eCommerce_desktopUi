@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import { GiShoppingCart } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import { RiCloseLargeFill } from "react-icons/ri";
-import { renderRating } from "../products/subPages/SingleProduct";
+import { renderRating } from "../products/accessories/singleProducts";
 import BillingForm from "../../components/BillingForm";
 
 const Billing = () => {

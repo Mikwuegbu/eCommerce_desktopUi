@@ -4,10 +4,11 @@ import CreateAccount from "../pages/auth/signUp/index";
 import ForgotPassword from "../pages/auth/forgotPassword/index";
 import PasswordReset from "../pages/auth/passwordReset/index";
 import Login from "../pages/auth/login/index";
-import ProductsSharedLayout from "../layouts/ProductsSharedLayout";
-import SingleProduct from "../pages/products/subPages/SingleProduct";
-import Product from "../pages/products/Product";
+import ProductsSharedLayout from "../layouts/ProductsLayout";
+import SingleProduct from "../pages/products/accessories/singleProducts";
+import Product from "../pages/products";
 import Billing from "../pages/billing";
+import Accessories from "../pages/products/accessories";
 
 const authRoutes: RouteObject = {
 	path: "/",
@@ -41,7 +42,11 @@ const productsRoutes: RouteObject = {
 			element: <Product />,
 		},
 		{
-			path: ":productId",
+			path: "accessories",
+			element: <Accessories />,
+		},
+		{
+			path: "accessories/:productId",
 			element: <SingleProduct />,
 		},
 	],

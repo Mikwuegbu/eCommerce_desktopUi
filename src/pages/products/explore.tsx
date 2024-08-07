@@ -5,11 +5,11 @@ import {
 	model2,
 	model5,
 	model6,
-} from "../../../assets/images";
+} from "../../assets/images";
 
 const Explore = () => {
 	return (
-		<div className='py-8 flex justify-center'>
+		<div className='py-8 flex justify-center	'>
 			<div className='grid grid-cols-2 gap-3 max-w-screen-lg'>
 				<div className='flex flex-col gap-y-3.5'>
 					<div className='h-44'>
