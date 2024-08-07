@@ -68,7 +68,7 @@ const ProductsSharedLayout = () => {
 					</div>
 				</div>
 			</div>
-			<div className='flex justify-between px-10 pr-20'>
+			<div className='flex justify-between px-10'>
 				<nav className='space-y-24 py-12 fixed'>
 					<Link
 						to='/products'
@@ -95,7 +95,7 @@ const ProductsSharedLayout = () => {
 						<p>Help Center</p>
 					</div>
 				</nav>
-				<div className='ml-80'>
+				<div className='ml-48'>
 					<Outlet />
 				</div>
 			</div>

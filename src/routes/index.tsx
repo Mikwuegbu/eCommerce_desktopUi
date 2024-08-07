@@ -9,6 +9,7 @@ import SingleProduct from "../pages/products/accessories/singleProducts";
 import Product from "../pages/products";
 import Billing from "../pages/billing";
 import Accessories from "../pages/products/accessories";
+import ErrorPage from "../pages/ErrorPage";
 
 const authRoutes: RouteObject = {
 	path: "/",
@@ -48,6 +49,10 @@ const productsRoutes: RouteObject = {
 		{
 			path: "accessories/:productId",
 			element: <SingleProduct />,
+		},
+		{
+			path: "*",
+			element: <ErrorPage />,
 		},
 	],
 };
