@@ -43,59 +43,59 @@ const ProductsSharedLayout = () => {
 	console.log(exploreBtn?.location);
 
 	return (
-		<div className='grid grid-flow-col gap-x-16 px-12'>
-			<div className='py-12 grid grid-flow-row'>
+		<div className='flex flex-col space-y-24'>
+			<div className='pt-12 px-6 flex justify-between fixed left-0 right-0 bg-white z-10'>
 				<div className='flex w-28 h-11'>
 					<img src={logo} alt={logo} className='' />
 				</div>
-				<Link
-					to='/products'
-					onClick={() => handleClick("explore")}
-					className='font-Sofia-Sans font-bold text-3xl flex'
-				>
-					Explore
-				</Link>
-				<div className='space-y-6 font-poppins font-medium text-justify '>
-					{exploreProducts.map((explore) => (
-						<Link
-							to={`/products/${explore.title.toLowerCase()}`}
-							onClick={() => handleClick(explore.title)}
-							key={explore.id}
-							className='flex space-x-2.5 hover:font-normal'
-						>
-							{explore.icon}
-							<p className='text-nowrap'>{explore.title}</p>
-						</Link>
-					))}
+
+				<div className='relative'>
+					<CiSearch size={23} className='absolute top-2 left-0 right-0' />
+					<input
+						type='text'
+						className='py-1.5 pl-7 outline-none focus:border-b-2'
+						placeholder='search store'
+					/>
 				</div>
-				<div className='font-poppins font-medium flex space-x-2.5'>
-					<IoChatbubble size={22} />
-					<p>Help Center</p>
+				<div className='flex justify-center place-items-center space-x-3 pr-8'>
+					<div className='flex space-x-4 place-items-center'>
+						<Link to='/billing' className='flex space-x-1 place-items-center'>
+							<GiShoppingCart /> <p className='text-xs'>{cartItems?.length}</p>
+						</Link>
+						<Link to='/auth/login'>
+							<CiUser />
+						</Link>
+					</div>
 				</div>
 			</div>
-			<div className='pt-14 grid justify-between '>
-				<nav className='grid grid-flow-col justify-between place-items-center '>
-					<div className='relative'>
-						<CiSearch size={23} className='absolute top-2 left-0 right-0' />
-						<input
-							type='text'
-							className='py-1.5 pl-7 outline-none focus:border-b-2'
-							placeholder='search store'
-						/>
+			<div className='flex justify-between px-10 pr-20'>
+				<nav className='space-y-24 py-12 fixed'>
+					<Link
+						to='/products'
+						onClick={() => handleClick("explore")}
+						className='font-Sofia-Sans font-bold text-3xl flex'
+					>
+						Explore
+					</Link>
+					<div className='space-y-6 font-poppins font-medium text-justify '>
+						{exploreProducts.map((explore) => (
+							<Link
+								to={`/products/${explore.title.toLowerCase()}`}
+								onClick={() => handleClick(explore.title)}
+								key={explore.id}
+								className='flex space-x-2.5 hover:font-normal'
+							>
+								{explore.icon}
+								<p className='text-nowrap'>{explore.title}</p>
+							</Link>
+						))}
 					</div>
-					<div className='flex justify-center place-items-center space-x-3 pr-8'>
-						<div className='flex space-x-4 place-items-center'>
-							<Link to='/billing' className='flex space-x-1 place-items-center'>
-								<GiShoppingCart />{" "}
-								<p className='text-xs'>{cartItems?.length}</p>
-							</Link>
-							<Link to='/auth/login'>
-								<CiUser />
-							</Link>
-						</div>
+					<div className='font-poppins font-medium flex space-x-2.5'>
+						<IoChatbubble size={22} />
+						<p>Help Center</p>
 					</div>
 				</nav>
-				<div className='overflow-hidden'>
+				<div className='ml-80'>
 					<Outlet />
 				</div>
 			</div>
