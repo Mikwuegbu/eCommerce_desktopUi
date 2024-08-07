@@ -7,7 +7,7 @@ const Accessories = () => {
 	const product = products?.products;
 
 	return (
-		<div className='grid grid-flow-col grid-rows-2 h-[760px] mx-8 pt-8 gap-x-6 gap-y-11 mb-8'>
+		<div className='grid grid-flow-col grid-rows-2 h-[760px] mx-4 pt-8 gap-x-4 gap-y-11 mb-8'>
 			{product!.map((product) => (
 				<Link to={`${product.id}`} key={product.id} className='relative'>
 					<div className='w-full h-80 overflow-hidden'>
