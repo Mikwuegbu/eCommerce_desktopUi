@@ -1,9 +1,7 @@
 import { ChangeEvent, useContext } from "react";
-import { ProductContext, QuantityContext } from "../products/Provider";
-import { CiGrid32, CiHeart, CiSearch, CiUser } from "react-icons/ci";
-import { NavLink } from "react-router-dom";
-import { GiShoppingCart } from "react-icons/gi";
-import { Link } from "react-router-dom";
+import { ProductContext, QuantityContext } from "../../utils/context";
+import { CiGrid32, CiHeart } from "react-icons/ci";
+
 import { RiCloseLargeFill } from "react-icons/ri";
 import { renderRating } from "../products/accessories/singleProducts";
 import BillingForm from "../../components/BillingForm";
@@ -22,61 +20,7 @@ const Billing = () => {
 	};
 
 	return (
-		<div className='px-14 pb-14'>
-			<nav className='grid grid-flow-col justify-between place-items-center py-8'>
-				<div className='relative'>
-					<CiSearch size={23} className='absolute top-2 left-0 right-0' />
-					<input
-						type='text'
-						className='py-1.5 pl-7 outline-none focus:border-b-2'
-						placeholder='search store'
-					/>
-				</div>
-				<div className='flex justify-center place-items-center space-x-3'>
-					<div className='flex space-x-10 font-poppins font-medium text-base'>
-						<NavLink
-							to='/products'
-							className={({ isActive }) =>
-								isActive ? "border-b-2 border-black" : ""
-							}
-						>
-							Products
-						</NavLink>
-						<NavLink
-							to='/'
-							className={({ isActive }) =>
-								isActive ? "border-b-2 border-black" : ""
-							}
-						>
-							Story
-						</NavLink>
-						<NavLink
-							to='/'
-							className={({ isActive }) =>
-								isActive ? "border-b-2 border-black" : ""
-							}
-						>
-							Manufacturing
-						</NavLink>
-						<NavLink
-							to='/'
-							className={({ isActive }) =>
-								isActive ? "border-b-2 border-black" : ""
-							}
-						>
-							packaging
-						</NavLink>
-					</div>
-					<div className='flex space-x-4 place-items-center'>
-						<Link to='/billing' className='flex space-x-1 place-items-center'>
-							<GiShoppingCart /> <p className='text-xs'>{cartItems?.length}</p>
-						</Link>
-						<Link to='/login'>
-							<CiUser />
-						</Link>
-					</div>
-				</div>
-			</nav>
+		<div className='px-14 py-16'>
 			<div className='flex justify-between space-x-8 px-28'>
 				<BillingForm />
 				<div className=' max-w-[468px] border rounded-2xl px-4 py-4'>

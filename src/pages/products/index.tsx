@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import Explore from "./explore";
-import { ExploreContext } from "./Provider";
+import Explore from "./explore/index";
+import { ExploreContext } from "../../utils/context";
 import Accessories from "./accessories";
 
 const Product = () => {
