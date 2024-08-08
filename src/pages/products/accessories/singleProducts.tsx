@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import { FaPlus, FaRegStar, FaStar } from "react-icons/fa";
-import { useContext } from "react";
-import { ProductContext, QuantityContext } from "../Provider";
+import products from "../../../utils/products.json";
 
 export const renderRating = (rating: number): JSX.Element[] => {
 	const filledStars = Array.from(Array(rating), () => (
@@ -15,27 +14,8 @@ export const renderRating = (rating: number): JSX.Element[] => {
 
 const SingleProduct = () => {
 	const { productId } = useParams();
-	const products = useContext(ProductContext);
-	const quantity = useContext(QuantityContext)?.quantity;
-	const setQuantity = useContext(QuantityContext)?.setQuantity;
-	const productItems = products?.products;
-
-	//rendering the Rating
-
-	//add to cartItems
-	const addToCart = (id: number) => {
-		const checkCart = products?.cartItems!.find((items) => items.id === id);
-		if (checkCart?.id !== id) {
-			const newItem = products?.products.find((item) => item.id === id);
-			if (newItem) {
-				products?.setCartItems([...products.cartItems!, newItem]);
-			}
-		}
-	};
-
-	const product = productItems?.find(
-		(item) => item.id.toString() === productId
-	);
+	const productItems = products.products;
+	const product = productItems.find((item) => item.id.toString() === productId);
 
 	return (
 		<div className='grid h-[740px] mx-8 pt-16 gap-5'>
@@ -77,12 +57,8 @@ const SingleProduct = () => {
 									</p>
 									<div className='flex place-items-center space-x-8'>
 										<div className='flex space-x-2.5 max-w-min border-2 px-4 py-3 rounded-2xl bg-gray-100'>
-											<span className='border-r-2 pr-4'>{quantity}</span>
+											<span className='border-r-2 pr-4'>0</span>
 											<select
-												onChange={(e) => {
-													setQuantity!(parseInt(e.target.value));
-													product.quantity = parseInt(e.target.value);
-												}}
 												name='num_of_items'
 												className='outline-none bg-gray-100 px-2'
 											>
@@ -94,10 +70,7 @@ const SingleProduct = () => {
 												<option value='4'>4 Pcs</option>
 											</select>
 										</div>
-										<button
-											onClick={() => addToCart(product.id)}
-											className='active:bg-[#000000c2] flex place-items-center space-x-1.5 bg-black text-white py-3 px-4 rounded-2xl'
-										>
+										<button className='active:bg-[#000000c2] flex place-items-center space-x-1.5 bg-black text-white py-3 px-4 rounded-2xl'>
 											<FaPlus /> <span>Add to cart</span>
 										</button>
 									</div>

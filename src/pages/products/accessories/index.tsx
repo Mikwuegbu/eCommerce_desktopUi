@@ -1,14 +1,12 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { ProductContext } from "../Provider";
+import products from "../../../utils/products.json";
 
 const Accessories = () => {
-	const products = useContext(ProductContext);
-	const product = products?.products;
+	const productItems = products.products;
 
 	return (
 		<div className='grid grid-flow-col grid-rows-2 h-[760px] mx-4 pt-8 gap-x-4 gap-y-11 mb-8'>
-			{product!.map((product) => (
+			{productItems.map((product) => (
 				<Link to={`${product.id}`} key={product.id} className='relative'>
 					<div className='w-full h-80 overflow-hidden'>
 						<img

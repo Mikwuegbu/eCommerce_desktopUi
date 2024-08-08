@@ -5,7 +5,7 @@ import {
 	model2,
 	model5,
 	model6,
-} from "../../assets/images";
+} from "../../../assets/images";
 
 const Explore = () => {
 	return (

@@ -13,7 +13,7 @@ import { MdSportsMartialArts } from "react-icons/md";
 import { IoChatbubble } from "react-icons/io5";
 import { CiSearch, CiUser } from "react-icons/ci";
 import { useContext } from "react";
-import { ExploreContext, ProductContext } from "../pages/products/Provider";
+import { ExploreContext, ProductContext } from "../utils/context";
 import { Link } from "react-router-dom";
 
 interface Explore {
@@ -44,21 +44,20 @@ const ProductsSharedLayout = () => {
 
 	return (
 		<div className='flex flex-col space-y-24'>
-			<div className='pt-12 px-6 flex justify-between fixed left-0 right-0 bg-white z-10'>
+			<div className='py-6 pt-8 px-6 flex justify-between fixed left-0 right-0 bg-white z-10'>
 				<div className='flex w-28 h-11'>
 					<img src={logo} alt={logo} className='' />
 				</div>
-
-				<div className='relative'>
-					<CiSearch size={23} className='absolute top-2 left-0 right-0' />
-					<input
-						type='text'
-						className='py-1.5 pl-7 outline-none focus:border-b-2'
-						placeholder='search store'
-					/>
-				</div>
-				<div className='flex justify-center place-items-center space-x-3 pr-8'>
-					<div className='flex space-x-4 place-items-center'>
+				<div className='flex place-items-center pr-8'>
+					<div className='relative'>
+						<CiSearch size={23} className='absolute top-2 left-0 right-0' />
+						<input
+							type='text'
+							className='py-1.5 pl-10 outline-none focus:border-b-2'
+							placeholder='search store'
+						/>
+					</div>
+					<div className='flex space-x-6 place-items-center'>
 						<Link to='/billing' className='flex space-x-1 place-items-center'>
 							<GiShoppingCart /> <p className='text-xs'>{cartItems?.length}</p>
 						</Link>

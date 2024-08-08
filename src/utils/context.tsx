@@ -5,10 +5,8 @@ import {
 	Reducer,
 	ReactNode,
 	FC,
-	useState,
 } from "react";
-import { productsType } from "../../types/products";
-import data from "../../utils/products.json";
+import { productsType, exploreType } from "../types/products";
 
 //context manager
 export const ExploreContext = createContext<exploreContextType | undefined>(
@@ -22,17 +20,6 @@ export const ProductContext = createContext<productContextType | undefined>(
 export const QuantityContext = createContext<quantityContextType | undefined>(
 	undefined
 );
-
-type exploreType =
-	| "explore"
-	| "new in"
-	| "clothing"
-	| "shoes"
-	| "accessories"
-	| "activewear"
-	| "gifts"
-	| "inspiration"
-	| string; // For dynamic locations
 
 // reducer Action type
 type exploreAction = { type: exploreType; payload: exploreType };
@@ -72,25 +59,16 @@ const exploreReducer: Reducer<exploreType, exploreAction> = (state, action) => {
 	}
 };
 
-const Provider: FC<{ children: ReactNode }> = ({ children }) => {
-	//useReducer --with the initial state and action typeChecked
+const ContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
 	const [location, dispatch] = useReducer<Reducer<exploreType, exploreAction>>(
 		exploreReducer,
 		"explore"
 	);
-	const [cartItems, setCartItems] = useState<productsType[]>([]);
-	const products = data.products;
-	const [quantity, setQuantity] = useState<number>(1);
-
 	return (
-		<ProductContext.Provider value={{ products, cartItems, setCartItems }}>
-			<QuantityContext.Provider value={{ quantity, setQuantity }}>
-				<ExploreContext.Provider value={{ location, dispatch }}>
-					{children}
-				</ExploreContext.Provider>
-			</QuantityContext.Provider>
-		</ProductContext.Provider>
+		<ExploreContext.Provider value={{ location, dispatch }}>
+			{children}
+		</ExploreContext.Provider>
 	);
 };
 
-export default Provider;
+export default ContextProvider;
