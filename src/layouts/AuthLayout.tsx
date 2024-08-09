@@ -22,9 +22,9 @@ const AuthLayout = () => {
 	};
 
 	return (
-		<section className='grid grid-cols-2 h-screen'>
+		<section className='grid justify-center lg:justify-normal lg:grid-cols-2 h-screen lg:fixed lg:left-0 lg:right-0'>
 			<div
-				className={`order-last ${bgImage()} bg-cover bg-bottom h-screen px-16 text-white`}
+				className={`order-last ${bgImage()} bg-cover bg-bottom h-screen px-16 text-white hidden lg:block`}
 			>
 				<div className='grid gap-8 my-24'>
 					<h1 className='font-medium text-5xl leading-[75px] tracking-wide '>
@@ -48,7 +48,9 @@ const AuthLayout = () => {
 					</button>
 				</div>
 			</div>
-			<Outlet />
+			<div className=''>
+				<Outlet />
+			</div>
 		</section>
 	);
 };

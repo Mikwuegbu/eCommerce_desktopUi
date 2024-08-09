@@ -1,4 +1,4 @@
-import { authButton } from '../types/authTypes';
+import { authButton } from "../types/authTypes";
 
 //authentication Button component
 const AuthButton = ({ displayText, className, children }: authButton) => {

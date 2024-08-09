@@ -1,4 +1,4 @@
-import { formAttributes } from '../types/authTypes';
+import { formAttributes } from "../types/authTypes";
 
 //authentication form Components
 const FormInput = ({ type, className, placeholder, id }: formAttributes) => {

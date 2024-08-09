@@ -5,12 +5,12 @@ import FormInput from "../../../components/FormInput";
 
 const PasswordReset = () => {
 	return (
-		<div className='my-24 mx-40 grid justify-center'>
-			<div className='space-y-16'>
-				<h1 className='font-medium text-5xl text-center text-nowrap'>
+		<div className='md:my-24 my-16 lg:mx-40 grid justify-center'>
+			<div className='space-y-16 mx-4 lg:relative fixed left-0 right-0 md:mx-36'>
+				<h1 className='font-medium md:text-5xl text-center lg:text-justify text-nowrap text-4xl'>
 					Password reset
 				</h1>
-				<div className='flex flex-col space-y-4 mt-4 w-[400px]'>
+				<div className='flex flex-col space-y-4 mt-4 lg:w-[400px]'>
 					<div className='font-medium text-sm flex space-x-2 '>
 						<p className='opacity-40'>We sent the code to </p>
 						<p>name@mail.domain</p>
@@ -36,7 +36,7 @@ const PasswordReset = () => {
 
 				<Link
 					to='/forgotten'
-					className='font-medium flex items-center space-x-2 pt-52'
+					className='font-medium lg:flex items-center space-x-2 pt-52 hidden'
 				>
 					<img src={backArrow} alt={backArrow} className='h-4 w-4' />
 					<p className='text-base'>Back</p>

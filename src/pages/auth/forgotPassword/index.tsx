@@ -5,12 +5,12 @@ import FormInput from "../../../components/FormInput";
 
 const ForgotPassword = () => {
 	return (
-		<div className='my-24 mx-40 grid justify-center'>
-			<div className='space-y-16'>
-				<h1 className='font-medium text-5xl text-center text-nowrap'>
+		<div className='md:my-24 my-16 lg:mx-40 grid justify-center'>
+			<div className='md:space-y-16 space-y-10 md:fixed left-0 right-0 mx-4 md:mx-36'>
+				<h1 className='font-medium md:text-5xl text-4xl lg:text-justify text-center text-nowrap'>
 					Forgot password
 				</h1>
-				<div className='flex flex-col space-y-6 mt-4 w-[400px]'>
+				<div className='flex flex-col space-y-6 mt-4 lg:w-[400px]'>
 					<p className='font-medium text-sm'>
 						Enter the email address you used when you joined and we’ll send you
 						code to reset your password.
@@ -28,7 +28,7 @@ const ForgotPassword = () => {
 
 				<Link
 					to='/login'
-					className='font-medium flex items-center space-x-2 pt-52'
+					className='font-medium lg:flex items-center space-x-2 pt-52 hidden'
 				>
 					<img src={backArrow} alt={backArrow} className='h-4 w-4' />
 					<p className='text-base'>Back</p>
