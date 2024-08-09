@@ -1,6 +1,9 @@
 import { useParams } from "react-router-dom";
 import { FaPlus, FaRegStar, FaStar } from "react-icons/fa";
 import products from "../../../utils/products.json";
+import { useDispatch, useSelector } from "react-redux";
+import { addItemToCart, updateItemQuantity } from "../../../store";
+import { RootState } from "../../../store/store";
 
 export const renderRating = (rating: number): JSX.Element[] => {
 	const filledStars = Array.from(Array(rating), () => (
@@ -16,6 +19,19 @@ const SingleProduct = () => {
 	const { productId } = useParams();
 	const productItems = products.products;
 	const product = productItems.find((item) => item.id.toString() === productId);
+	const cart = useSelector((state: RootState) => state.cart.items);
+	const cartItem = cart.find((item) => item.id === product?.id);
+	const dispatch = useDispatch();
+
+	const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+		const selectedQuantity: number = parseInt(event.target.value);
+		dispatch(
+			updateItemQuantity({
+				productId: cartItem!.id,
+				quantity: selectedQuantity,
+			})
+		);
+	};
 
 	return (
 		<div className='grid h-[740px] mx-8 pt-16 gap-5'>
@@ -57,10 +73,14 @@ const SingleProduct = () => {
 									</p>
 									<div className='flex place-items-center space-x-8'>
 										<div className='flex space-x-2.5 max-w-min border-2 px-4 py-3 rounded-2xl bg-gray-100'>
-											<span className='border-r-2 pr-4'>0</span>
+											<span className='border-r-2 pr-4'>
+												{cartItem?.quantity}
+											</span>
 											<select
+												onChange={handleSelectChange}
 												name='num_of_items'
 												className='outline-none bg-gray-100 px-2'
+												disabled={cart.length < 1}
 											>
 												<option defaultValue={1} value={1}>
 													PCs
@@ -70,7 +90,10 @@ const SingleProduct = () => {
 												<option value='4'>4 Pcs</option>
 											</select>
 										</div>
-										<button className='active:bg-[#000000c2] flex place-items-center space-x-1.5 bg-black text-white py-3 px-4 rounded-2xl'>
+										<button
+											onClick={() => dispatch(addItemToCart(product))}
+											className='active:bg-[#000000c2] flex place-items-center space-x-1.5 bg-black text-white py-3 px-4 rounded-2xl'
+										>
 											<FaPlus /> <span>Add to cart</span>
 										</button>
 									</div>

@@ -1,22 +1,17 @@
-import { ChangeEvent, useContext } from "react";
-import { ProductContext, QuantityContext } from "../../utils/context";
+import { ChangeEvent } from "react";
+
 import { CiGrid32, CiHeart } from "react-icons/ci";
 
 import { RiCloseLargeFill } from "react-icons/ri";
 import { renderRating } from "../products/accessories/singleProducts";
 import BillingForm from "../../components/BillingForm";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 const Billing = () => {
-	//const checkOutItems = useContext(ProductContext)?.cartItems;
-	const cartItems = useContext(ProductContext)?.cartItems;
-	const quantity = useContext(QuantityContext)?.quantity;
-	const setQuantity = useContext(QuantityContext)?.setQuantity;
-	const initialVal = 0;
-
+	const cartItems = useSelector((state: RootState) => state.cart.items);
 	const handleQuantity = (e: ChangeEvent<HTMLSelectElement>) => {
 		e.preventDefault;
-		const selectedIndex = parseInt(e.target.value);
-		setQuantity!(selectedIndex);
 	};
 
 	return (
@@ -34,7 +29,7 @@ const Billing = () => {
 						</p>
 					</div>
 					<div>
-						{cartItems?.map((product) => {
+						{cartItems.map((product) => {
 							return (
 								<div
 									key={product.id}
@@ -72,7 +67,7 @@ const Billing = () => {
 													</s>
 												</div>
 												<div className='flex space-x-2.5 max-w-min border-2 px-2 place-items-center py-1 rounded-2xl bg-gray-100'>
-													<span className='border-r-2 pr-4'>{quantity}</span>
+													<span className='border-r-2 pr-4'>TODO</span>
 													<select
 														onChange={handleQuantity}
 														name='num_of_items'
@@ -101,12 +96,7 @@ const Billing = () => {
 								<p>Shipping:</p>
 							</div>
 							<div>
-								<p>
-									{cartItems?.reduce(
-										(sum, product) => sum + product.quantity * product.price,
-										initialVal
-									)}
-								</p>
+								<p>TODO</p>
 								<p>Hello</p>
 							</div>
 						</div>

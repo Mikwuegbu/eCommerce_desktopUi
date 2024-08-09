@@ -13,8 +13,10 @@ import { MdSportsMartialArts } from "react-icons/md";
 import { IoChatbubble } from "react-icons/io5";
 import { CiSearch, CiUser } from "react-icons/ci";
 import { useContext } from "react";
-import { ExploreContext, ProductContext } from "../utils/context";
+import { ExploreContext } from "../utils/context";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../store/store";
 
 interface Explore {
 	id: number;
@@ -34,13 +36,14 @@ const exploreProducts: Explore[] = [
 
 const ProductsSharedLayout = () => {
 	const exploreBtn = useContext(ExploreContext);
-	const cartItems = useContext(ProductContext)?.cartItems;
+
+	const cartNumofItems = useSelector(
+		(state: RootState) => state.cart.items.length
+	);
 
 	const handleClick = (btn: string) => {
 		exploreBtn?.dispatch({ type: btn, payload: btn });
 	};
-
-	console.log(exploreBtn?.location);
 
 	return (
 		<div className='flex flex-col space-y-24'>
@@ -59,7 +62,7 @@ const ProductsSharedLayout = () => {
 					</div>
 					<div className='flex space-x-6 place-items-center'>
 						<Link to='/billing' className='flex space-x-1 place-items-center'>
-							<GiShoppingCart /> <p className='text-xs'>{cartItems?.length}</p>
+							<GiShoppingCart /> <p className='text-xs'>{cartNumofItems}</p>
 						</Link>
 						<Link to='/auth/login'>
 							<CiUser />
