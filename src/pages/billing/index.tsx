@@ -1,17 +1,34 @@
-import { ChangeEvent } from "react";
-
 import { CiGrid32, CiHeart } from "react-icons/ci";
 
 import { RiCloseLargeFill } from "react-icons/ri";
 import { renderRating } from "../products/accessories/singleProducts";
 import BillingForm from "../../components/BillingForm";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import { updateItemQuantity } from "../../store";
 
 const Billing = () => {
 	const cartItems = useSelector((state: RootState) => state.cart.items);
-	const handleQuantity = (e: ChangeEvent<HTMLSelectElement>) => {
-		e.preventDefault;
+	const dispatch = useDispatch();
+
+	// -- Handle the quantity Selection
+	const handleSelectChange = (
+		event: React.ChangeEvent<HTMLSelectElement>,
+		productId: number
+	) => {
+		const selectedCartItem = cartItems.find((item) => item.id === productId);
+		const selectedQuantity: number = parseInt(event.target.value);
+		dispatch(
+			updateItemQuantity({
+				productId: selectedCartItem!.id,
+				quantity: selectedQuantity,
+			})
+		);
+	};
+
+	// -- Calculate the total price of the cart items
+	const sumCartItems = (): number => {
+		return cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
 	};
 
 	return (
@@ -67,9 +84,11 @@ const Billing = () => {
 													</s>
 												</div>
 												<div className='flex space-x-2.5 max-w-min border-2 px-2 place-items-center py-1 rounded-2xl bg-gray-100'>
-													<span className='border-r-2 pr-4'>TODO</span>
+													<span className='border-r-2 pr-4'>
+														{product.quantity}
+													</span>
 													<select
-														onChange={handleQuantity}
+														onChange={(e) => handleSelectChange(e, product.id)}
 														name='num_of_items'
 														className='outline-none bg-gray-100 px-2'
 													>
@@ -96,7 +115,7 @@ const Billing = () => {
 								<p>Shipping:</p>
 							</div>
 							<div>
-								<p>TODO</p>
+								<p>${sumCartItems()}</p>
 								<p>Hello</p>
 							</div>
 						</div>

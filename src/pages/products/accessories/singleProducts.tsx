@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart, updateItemQuantity } from "../../../store";
 import { RootState } from "../../../store/store";
 
+// --rendering the Stars
 export const renderRating = (rating: number): JSX.Element[] => {
 	const filledStars = Array.from(Array(rating), () => (
 		<FaStar fill='#FDBC15' size={20} />
@@ -23,6 +24,7 @@ const SingleProduct = () => {
 	const cartItem = cart.find((item) => item.id === product?.id);
 	const dispatch = useDispatch();
 
+	// -- Handle the quantity Selection
 	const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
 		const selectedQuantity: number = parseInt(event.target.value);
 		dispatch(
