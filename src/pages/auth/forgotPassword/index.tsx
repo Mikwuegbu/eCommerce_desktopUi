@@ -6,7 +6,7 @@ import FormInput from "../../../components/FormInput";
 const ForgotPassword = () => {
 	return (
 		<div className='md:my-24 my-16 lg:mx-40 grid justify-center'>
-			<div className='md:space-y-16 space-y-10 md:fixed left-0 right-0 mx-4 md:mx-36'>
+			<div className='md:space-y-16 lg:relative space-y-10 md:mx-36 md:fixed left-0 right-0 mx-6'>
 				<h1 className='font-medium md:text-5xl text-4xl lg:text-justify text-center text-nowrap'>
 					Forgot password
 				</h1>
@@ -22,13 +22,13 @@ const ForgotPassword = () => {
 					/>
 					<AuthButton
 						displayText='Continue'
-						className='flex justify-center items-center font-medium text-base bg-black text-white px-16 rounded-xl h-[60px]'
+						className='flex justify-center items-center text-nowrap font-medium text-base bg-black text-white px-16 rounded-xl h-[60px]'
 					/>
 				</div>
 
 				<Link
 					to='/login'
-					className='font-medium lg:flex items-center space-x-2 pt-52 hidden'
+					className='font-medium lg:flex items-center space-x-2 text-nowrap pt-52 hidden'
 				>
 					<img src={backArrow} alt={backArrow} className='h-4 w-4' />
 					<p className='text-base'>Back</p>

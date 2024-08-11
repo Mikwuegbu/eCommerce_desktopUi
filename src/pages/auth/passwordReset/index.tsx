@@ -23,7 +23,7 @@ const PasswordReset = () => {
 						/>
 						<AuthButton
 							displayText='Continue'
-							className='flex justify-center items-center font-medium text-base bg-black text-white px-16 rounded-xl h-[60px]'
+							className='flex justify-center items-center font-medium text-base text-nowrap bg-black text-white px-16 rounded-xl h-[60px]'
 						/>
 					</div>
 					<div className='flex font-medium text-sm space-x-2'>

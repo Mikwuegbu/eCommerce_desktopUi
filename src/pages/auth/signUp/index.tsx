@@ -5,8 +5,8 @@ import { appleIcon, googleIcon } from "../../../assets/icons/icons";
 
 const CreateAccount = () => {
 	return (
-		<div className='md:my-24 my-6 left-0 right-0 mx-6 lg:mx-40 grid'>
-			<div className='md:space-y-12 space-y-8 md:fixed md:left-0 md:right-0  lg:relative md:mx-28'>
+		<div className='md:my-24 justify-center my-6 left-0 right-0 mx-6 lg:mx-40 grid'>
+			<div className='md:space-y-12 space-y-8 md:fixed md:left-0 md:right-0 lg:relative md:mx-28'>
 				<h1 className='text-center font-medium lg:text-5xl text-4xl text-nowrap'>
 					Create account
 				</h1>
