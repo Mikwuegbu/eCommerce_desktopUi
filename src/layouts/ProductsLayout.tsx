@@ -10,13 +10,16 @@ import {
 } from "react-icons/gi";
 import { BsHandbagFill } from "react-icons/bs";
 import { MdSportsMartialArts } from "react-icons/md";
-import { IoChatbubble } from "react-icons/io5";
+import { IoChatbubble, IoCloseOutline } from "react-icons/io5";
 import { CiSearch, CiUser } from "react-icons/ci";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ExploreContext } from "../utils/context";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
+import { FaHamburger } from "react-icons/fa";
+import { FaMobileScreenButton } from "react-icons/fa6";
+import { IoIosClose, IoIosMenu } from "react-icons/io";
 
 interface Explore {
 	id: number;
@@ -36,6 +39,11 @@ const exploreProducts: Explore[] = [
 
 const ProductsSharedLayout = () => {
 	const exploreBtn = useContext(ExploreContext);
+	const [isOpen, setIsOpen] = useState<boolean>(false);
+
+	const toggleMenu = () => {
+		setIsOpen(!isOpen);
+	};
 
 	const cartNumofItems = useSelector(
 		(state: RootState) => state.cart.items.length
@@ -46,22 +54,60 @@ const ProductsSharedLayout = () => {
 	};
 
 	return (
-		<div className='flex flex-col space-y-24'>
-			<div className='py-6 pt-8 px-6 flex justify-between fixed left-0 right-0 bg-white z-10'>
-				<div className='flex w-28 h-11'>
+		<div className='flex flex-row space-y-24 relative'>
+			<div className='py-6 pt-8 md:px-6 place-items-center md:space-x-4 flex px-6 justify-between fixed left-0 right-0 bg-white z-10'>
+				<div className='md:flex w-28 h-11 hidden'>
 					<img src={logo} alt={logo} className='' />
 				</div>
-				<div className='flex place-items-center pr-8'>
-					<div className='relative'>
-						<CiSearch size={23} className='absolute top-2 left-0 right-0' />
-						<input
-							type='text'
-							className='py-1.5 pl-10 outline-none focus:border-b-2'
-							placeholder='search store'
-						/>
-					</div>
-					<div className='flex space-x-6 place-items-center'>
-						<Link to='/billing' className='flex space-x-1 place-items-center'>
+				<button onClick={toggleMenu} className='md:hidden relative top-1'>
+					{!isOpen ? (
+						<IoIosMenu size={26} />
+					) : (
+						<IoCloseOutline size={26} className='relative left-40 z-10 top-1' />
+					)}
+				</button>
+				<div className='absolute top-0 left-0'>
+					{isOpen && (
+						<nav className='space-y-24 absolute px-6 pt-28 h-screen w-56 bg-gray-500 bg-opacity-45'>
+							<div className='space-y-5 font-poppins font-medium text-justify'>
+								{exploreProducts.map((explore) => (
+									<Link
+										to={`/products/${explore.title.toLowerCase()}`}
+										onClick={() => handleClick(explore.title)}
+										key={explore.id}
+										className='flex space-x-2.5 hover:font-normal'
+									>
+										{explore.icon}
+										<p className='text-nowrap'>{explore.title}</p>
+									</Link>
+								))}
+							</div>
+							<div className='font-poppins font-medium flex space-x-2.5'>
+								<IoChatbubble size={22} />
+								<p>Help Center</p>
+							</div>
+						</nav>
+					)}
+				</div>
+
+				<div className='flex place-items-center lg:pr-8'>
+					{!isOpen && (
+						<div className='relative'>
+							<CiSearch
+								size={23}
+								className='absolute top-2 md:-left-28 left-0 right-0 w-5 md:w-full'
+							/>
+							<input
+								type='text'
+								className='py-1.5 w-2/3 md:w-full md:pl-10 placeholder:pl-8 outline-none placeholder:text-sm md:placeholder:text-base focus:border-b-2'
+								placeholder='search store'
+							/>
+						</div>
+					)}
+					<div
+						className={`${isOpen ? "pt-2.5 flex space-x-2.5 lg:space-x-6" : "flex space-x-2.5 lg:space-x-6"}`}
+					>
+						<Link to='/billing' className='flex space-x-1'>
 							<GiShoppingCart /> <p className='text-xs'>{cartNumofItems}</p>
 						</Link>
 						<Link to='/auth/login'>
@@ -70,7 +116,7 @@ const ProductsSharedLayout = () => {
 					</div>
 				</div>
 			</div>
-			<div className='flex justify-between px-10'>
+			<div className='px-10 hidden md:block'>
 				<nav className='space-y-24 py-12 fixed'>
 					<Link
 						to='/products'
