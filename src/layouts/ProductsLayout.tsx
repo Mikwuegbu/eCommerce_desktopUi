@@ -49,11 +49,12 @@ const ProductsSharedLayout = () => {
 
 	const handleClick = (btn: string) => {
 		exploreBtn?.dispatch({ type: btn, payload: btn });
+		setIsOpen(false);
 	};
 
 	return (
-		<div className='flex flex-row space-y-24 relative'>
-			<div className='py-6 pt-8 md:px-6 place-items-center md:space-x-4 flex px-6 justify-between md:fixed left-0 right-0 bg-white z-10'>
+		<div className='flex flex-col space-y-24 relative'>
+			<div className='py-6 pt-8 md:px-6 place-items-center md:space-x-4 flex px-6 justify-between fixed left-0 right-0 bg-white z-10'>
 				<div className='md:flex w-28 h-11 hidden'>
 					<img src={logo} alt={logo} className='' />
 				</div>
@@ -66,7 +67,7 @@ const ProductsSharedLayout = () => {
 				</button>
 				<div className='absolute top-0 left-0'>
 					{isOpen && (
-						<nav className='space-y-24 absolute px-6 pt-28 h-screen w-56 bg-gray-200 bg-opacity-45'>
+						<nav className='space-y-24 absolute px-6 pt-28 h-screen w-56 bg-white'>
 							<div className='space-y-5 font-poppins font-medium text-justify'>
 								{exploreProducts.map((explore) => (
 									<Link
@@ -141,7 +142,12 @@ const ProductsSharedLayout = () => {
 						<p>Help Center</p>
 					</div>
 				</nav>
-				<div className='ml-48'>
+				<div className='ml-40'>
+					<Outlet />
+				</div>
+			</div>
+			<div className='px-4 md:hidden'>
+				<div className=''>
 					<Outlet />
 				</div>
 			</div>

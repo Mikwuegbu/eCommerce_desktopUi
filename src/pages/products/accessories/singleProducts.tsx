@@ -36,19 +36,22 @@ const SingleProduct = () => {
 	};
 
 	return (
-		<div className='grid h-[740px] mx-8 pt-16 gap-5'>
+		<div className='grid h-[740px] mx-8 pt-16 justify-center'>
 			{product && (
-				<div key={product.id} className='flex space-x-16 max-w-max'>
+				<div
+					key={product.id}
+					className='flex flex-col md:flex-row md:space-x-16 max-w-max'
+				>
 					<div className='overflow-hidden min-w-max'>
 						<img
 							src={product.image}
 							alt={product.displayName}
-							className='w-[380px] h-[340px] object-cover scale-100 rounded-2xl'
+							className='md:w-[380px] md:h-[340px] w-[340px] h-[300px] object-cover scale-100 rounded-2xl'
 						/>
 					</div>
 					<div className='min-w-min mb-4'>
-						<div className=''>
-							<h2 className='font-poppins font-semibold text-3xl'>
+						<div className=' flex flex-col justify-center'>
+							<h2 className='font-poppins font-semibold md:text-3xl text-2xl'>
 								{product.name}
 							</h2>
 
@@ -59,7 +62,7 @@ const SingleProduct = () => {
 								</span>
 							</div>
 							<p className='text-base font-normal py-6'>{product.details}</p>
-							<div className='grid grid-cols-2 gap-4'>
+							<div className='grid md:grid-cols-2 gap-4'>
 								{product.specs.map((spec) => {
 									return (
 										<div key={spec.key} className=''>
@@ -69,19 +72,20 @@ const SingleProduct = () => {
 								})}
 							</div>
 							<div className='py-10'>
-								<div className='flex justify-between bg-gray-50 py-3.5 px-4 place-items-center rounded-2xl'>
-									<p className='font-semibold text-3xl text-[#6A983C]'>
+								<div className='flex justify-between bg-gray-50 py-3.5 md:px-4 px-6 place-items-center rounded-2xl'>
+									<p className='font-semibold md:text-3xl text-xl text-[#6A983C]'>
 										{product.price.toFixed(2)}&nbsp;USD
 									</p>
-									<div className='flex place-items-center space-x-8'>
-										<div className='flex space-x-2.5 max-w-min border-2 px-4 py-3 rounded-2xl bg-gray-100'>
+									{/* -- DropDown and Button */}
+									<div className='flex flex-row place-items-center space-x-8'>
+										<div className='md:flex hidden md:space-x-2.5 max-w-min border-2 md:px-4 px-2 py-3 rounded-2xl bg-gray-100'>
 											<span className='border-r-2 pr-4'>
 												{cartItem?.quantity}
 											</span>
 											<select
 												onChange={handleSelectChange}
 												name='num_of_items'
-												className='outline-none bg-gray-100 px-2'
+												className='outline-none bg-gray-100 md:px-2'
 												disabled={cart.length < 1}
 											>
 												<option defaultValue={1} value={1}>
@@ -94,13 +98,20 @@ const SingleProduct = () => {
 										</div>
 										<button
 											onClick={() => dispatch(addItemToCart(product))}
-											className='active:bg-[#000000c2] flex place-items-center space-x-1.5 bg-black text-white py-3 px-4 rounded-2xl'
+											className='hidden active:bg-[#000000c2] md:flex place-items-center space-x-1.5 bg-black text-white py-3 px-4 rounded-2xl'
 										>
 											<FaPlus /> <span>Add to cart</span>
 										</button>
+										<button
+											onClick={() => dispatch(addItemToCart(product))}
+											className='md:hidden active:bg-[#000000c2] flex place-items-center space-x-1.5 bg-black text-white py-3 px-6 rounded-2xl'
+										>
+											<FaPlus /> <span>Add</span>
+										</button>
 									</div>
 								</div>
-								<div className='pt-8 pb-6 flex justify-between font-semibold text-xl space-x-8'>
+
+								<div className='pt-8 pb-6 flex font-semibold md:text-xl space-x-8 px-6'>
 									<button className='w-full text-justify hover:border-b-[2.5px] pb-4 border-[#6A983C]'>
 										Description
 									</button>

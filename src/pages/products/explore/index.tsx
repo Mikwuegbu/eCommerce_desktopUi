@@ -9,9 +9,10 @@ import {
 
 const Explore = () => {
 	return (
-		<div className='py-8 flex justify-center ml-36'>
-			<div className='grid grid-cols-2 gap-3 max-w-screen-lg'>
+		<div className='py-8 flex lg:justify-center lg:ml-36'>
+			<div className='grid md:grid-cols-2 gap-3 max-w-screen-lg'>
 				<div className='flex flex-col gap-y-3.5'>
+					{/* -- first banner1 */}
 					<div className='h-44'>
 						<img
 							src={banner1}
@@ -19,6 +20,7 @@ const Explore = () => {
 							className='w-full h-full object-cover rounded-2xl'
 						/>
 					</div>
+					{/* -- second Banner */}
 					<div className='h-44'>
 						<img
 							src={banner2}
@@ -36,6 +38,7 @@ const Explore = () => {
 					</div>
 				</div>
 				<div className='flex flex-col gap-y-3'>
+					{/* --third Banner */}
 					<div className='grid grid-cols-2 gap-x-3'>
 						<div className='relative w-full h-96 overflow-hidden rounded-2xl'>
 							<img src={model1} alt='' className='w-full h-full object-cover' />
@@ -44,6 +47,7 @@ const Explore = () => {
 							<img src={model2} alt='' className='w-full h-full object-cover' />
 						</div>
 					</div>
+					{/* -- fourth banner */}
 					<div className='flex flex-col gap-y-3.5'>
 						<div className='w-full h-44'>
 							<img
