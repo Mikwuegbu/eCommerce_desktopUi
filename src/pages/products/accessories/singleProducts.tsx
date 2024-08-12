@@ -111,7 +111,7 @@ const SingleProduct = () => {
 									</div>
 								</div>
 
-								<div className='pt-8 pb-6 flex font-semibold md:text-xl space-x-8 px-6'>
+								<div className='pt-8 pb-6 flex font-semibold md:text-xl space-x-8'>
 									<button className='w-full text-justify hover:border-b-[2.5px] pb-4 border-[#6A983C]'>
 										Description
 									</button>
