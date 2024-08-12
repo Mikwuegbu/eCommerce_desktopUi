@@ -17,9 +17,7 @@ import { ExploreContext } from "../utils/context";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
-import { FaHamburger } from "react-icons/fa";
-import { FaMobileScreenButton } from "react-icons/fa6";
-import { IoIosClose, IoIosMenu } from "react-icons/io";
+import { IoIosMenu } from "react-icons/io";
 
 interface Explore {
 	id: number;
@@ -55,7 +53,7 @@ const ProductsSharedLayout = () => {
 
 	return (
 		<div className='flex flex-row space-y-24 relative'>
-			<div className='py-6 pt-8 md:px-6 place-items-center md:space-x-4 flex px-6 justify-between fixed left-0 right-0 bg-white z-10'>
+			<div className='py-6 pt-8 md:px-6 place-items-center md:space-x-4 flex px-6 justify-between md:fixed left-0 right-0 bg-white z-10'>
 				<div className='md:flex w-28 h-11 hidden'>
 					<img src={logo} alt={logo} className='' />
 				</div>
@@ -68,7 +66,7 @@ const ProductsSharedLayout = () => {
 				</button>
 				<div className='absolute top-0 left-0'>
 					{isOpen && (
-						<nav className='space-y-24 absolute px-6 pt-28 h-screen w-56 bg-gray-500 bg-opacity-45'>
+						<nav className='space-y-24 absolute px-6 pt-28 h-screen w-56 bg-gray-200 bg-opacity-45'>
 							<div className='space-y-5 font-poppins font-medium text-justify'>
 								{exploreProducts.map((explore) => (
 									<Link
@@ -89,10 +87,9 @@ const ProductsSharedLayout = () => {
 						</nav>
 					)}
 				</div>
-
 				<div className='flex place-items-center lg:pr-8'>
 					{!isOpen && (
-						<div className='relative'>
+						<div className='relative ml-12'>
 							<CiSearch
 								size={23}
 								className='absolute top-2 md:-left-28 left-0 right-0 w-5 md:w-full'
@@ -105,10 +102,11 @@ const ProductsSharedLayout = () => {
 						</div>
 					)}
 					<div
-						className={`${isOpen ? "pt-2.5 flex space-x-2.5 lg:space-x-6" : "flex space-x-2.5 lg:space-x-6"}`}
+						className={`${isOpen ? "pt-2.5 flex absolute pr-8 right-0 space-x-2.5 lg:space-x-6" : "flex space-x-2.5 lg:space-x-6"}`}
 					>
 						<Link to='/billing' className='flex space-x-1'>
-							<GiShoppingCart /> <p className='text-xs'>{cartNumofItems}</p>
+							<GiShoppingCart />
+							<p className='text-xs'>{cartNumofItems}</p>
 						</Link>
 						<Link to='/auth/login'>
 							<CiUser />
