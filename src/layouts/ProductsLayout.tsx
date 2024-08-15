@@ -19,13 +19,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { IoIosMenu } from "react-icons/io";
 
-interface Explore {
-	id: number;
-	title: string;
-	icon: React.ReactNode;
-}
-
-const exploreProducts: Explore[] = [
+const exploreProducts = [
 	{ id: 1, title: "New in", icon: <FcFlashOn size={22} /> },
 	{ id: 2, title: "Clothing", icon: <GiClothes size={22} /> },
 	{ id: 3, title: "Shoes", icon: <GiRunningShoe size={22} /> },
@@ -56,7 +50,7 @@ const ProductsSharedLayout = () => {
 		<div className='flex flex-col space-y-24 relative'>
 			<div className='py-6 pt-8 md:px-6 place-items-center md:space-x-4 flex px-6 justify-between fixed left-0 right-0 bg-white z-10'>
 				<div className='md:flex w-28 h-11 hidden'>
-					<img src={logo} alt={logo} className='' />
+					<img src={logo} alt={logo} />
 				</div>
 				<button onClick={toggleMenu} className='md:hidden relative top-1'>
 					{!isOpen ? (

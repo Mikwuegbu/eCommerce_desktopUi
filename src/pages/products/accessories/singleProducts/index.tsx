@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
 import { FaPlus, FaRegStar, FaStar } from "react-icons/fa";
-import products from "../../../utils/products.json";
+import products from "../../../../utils/products.json";
 import { useDispatch, useSelector } from "react-redux";
-import { addItemToCart, updateItemQuantity } from "../../../store";
-import { RootState } from "../../../store/store";
+import { addItemToCart, updateItemQuantity } from "../../../../store";
+import { RootState } from "../../../../store/store";
 
 // --rendering the Stars
 export const renderRating = (rating: number): JSX.Element[] => {
@@ -40,7 +40,7 @@ const SingleProduct = () => {
 			{product && (
 				<div
 					key={product.id}
-					className='flex flex-col md:flex-row md:space-x-16 max-w-max'
+					className='lg:flex flex-col md:flex-row md:space-x-16 max-w-max'
 				>
 					<div className='overflow-hidden min-w-max'>
 						<img
@@ -51,7 +51,7 @@ const SingleProduct = () => {
 					</div>
 					<div className='min-w-min mb-4'>
 						<div className=' flex flex-col justify-center'>
-							<h2 className='font-poppins font-semibold md:text-3xl text-2xl'>
+							<h2 className='font-poppins font-semibold md:text-3xl text-xl text-justify py-2 text-nowrap'>
 								{product.name}
 							</h2>
 
@@ -98,15 +98,16 @@ const SingleProduct = () => {
 										</div>
 										<button
 											onClick={() => dispatch(addItemToCart(product))}
-											className='hidden active:bg-[#000000c2] md:flex place-items-center space-x-1.5 bg-black text-white py-3 px-4 rounded-2xl'
+											className='hidden active:bg-[#000000c2] lg:flex place-items-center space-x-1.5 bg-black text-white py-3 px-4 rounded-2xl'
 										>
 											<FaPlus /> <span>Add to cart</span>
 										</button>
 										<button
 											onClick={() => dispatch(addItemToCart(product))}
-											className='md:hidden active:bg-[#000000c2] flex place-items-center space-x-1.5 bg-black text-white py-3 px-6 rounded-2xl'
+											className='lg:hidden active:bg-[#000000c2] flex place-items-center space-x-1.5 bg-black text-white py-3 px-6 rounded-2xl'
 										>
-											<FaPlus /> <span>Add</span>
+											<FaPlus />
+											<span>Add</span>
 										</button>
 									</div>
 								</div>

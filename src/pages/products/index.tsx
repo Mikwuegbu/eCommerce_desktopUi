@@ -3,6 +3,8 @@ import Explore from "./explore/index";
 import { ExploreContext } from "../../utils/context";
 import Accessories from "./accessories";
 
+// -- Types for the Navigation Types
+
 const Product = () => {
 	const products = useContext(ExploreContext);
 
