@@ -2,16 +2,16 @@ import { useParams } from "react-router-dom";
 import { FaPlus, FaRegStar, FaStar } from "react-icons/fa";
 import products from "../../../utils/products.json";
 import { useDispatch, useSelector } from "react-redux";
-import { addItemToCart, updateItemQuantity } from "../../../store";
-import { RootState } from "../../../store/store";
+import { addItemToCart, updateItemQuantity } from "../../../store/cartSlice";
+import { storeType } from "../../../store/store";
 
 // --rendering the Stars
 export const renderRating = (rating: number): JSX.Element[] => {
-	const filledStars = Array.from(Array(rating), () => (
-		<FaStar fill='#FDBC15' size={20} />
+	const filledStars = Array.from(Array(rating), (_, index) => (
+		<FaStar key={`filled-${index}`} fill='#FDBC15' size={20} />
 	));
-	const unfilledStars = Array.from(Array(5 - rating), () => (
-		<FaRegStar fill='#D1D1D1' size={20} />
+	const unfilledStars = Array.from(Array(5 - rating), (_, index) => (
+		<FaRegStar key={`unfilled-${index}`} fill='#D1D1D1' size={20} />
 	));
 	return [...filledStars, ...unfilledStars];
 };
@@ -20,7 +20,7 @@ const SingleProduct = () => {
 	const { productId } = useParams();
 	const productItems = products.products;
 	const product = productItems.find((item) => item.id.toString() === productId);
-	const cart = useSelector((state: RootState) => state.cart.items);
+	const cart = useSelector((state: storeType) => state.cart.items);
 	const cartItem = cart.find((item) => item.id === product?.id);
 	const dispatch = useDispatch();
 

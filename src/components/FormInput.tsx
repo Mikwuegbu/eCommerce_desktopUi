@@ -1,7 +1,13 @@
 import { formAttributes } from "../types/authTypes";
 
 //authentication form Components
-const FormInput = ({ type, className, placeholder, id }: formAttributes) => {
+const FormInput = ({
+	type,
+	className,
+	placeholder,
+	id,
+	inputChange,
+}: formAttributes) => {
 	return (
 		<>
 			<input
@@ -10,6 +16,7 @@ const FormInput = ({ type, className, placeholder, id }: formAttributes) => {
 				type={type}
 				className={className}
 				placeholder={placeholder}
+				onChange={inputChange}
 			/>
 		</>
 	);

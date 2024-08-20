@@ -5,7 +5,7 @@ import { renderRating } from "../products/accessories/singleProducts";
 import BillingForm from "../../components/BillingForm";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
-import { updateItemQuantity } from "../../store";
+import { updateItemQuantity } from "../../store/cartSlice";
 
 const Billing = () => {
 	const cartItems = useSelector((state: RootState) => state.cart.items);
