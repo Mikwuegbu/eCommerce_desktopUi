@@ -1,6 +1,6 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { arrowLeft, arrowRight } from "../assets/icons/icons";
-import AuthProvider from "../utils/useAuth";
+
 
 const AuthLayout = () => {
 	// Making the layout Background Dynamic

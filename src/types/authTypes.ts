@@ -1,4 +1,4 @@
-import { ChangeEventHandler, EventHandler, LegacyRef } from "react";
+import { ChangeEventHandler, EventHandler } from "react";
 
 // authentication button types
 export interface authButton {
