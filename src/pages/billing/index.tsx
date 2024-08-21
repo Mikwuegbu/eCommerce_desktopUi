@@ -33,27 +33,29 @@ const Billing = () => {
 	};
 
 	return (
-		<div className='px-14 py-16'>
-			<div className='flex justify-between space-x-8 px-28'>
-				<BillingForm />
-				<div className=' max-w-[468px] border rounded-2xl px-4 py-4'>
+		<div className='lg:px-14 px-6 py-16'>
+			<div className='flex flex-col lg:flex-row justify-between md:space-x-8 lg:px-28'>
+				<div className='w-full order-2 lg:order-1'>
+					<BillingForm />
+				</div>
+				<div className='order-1 lg:order-2 max-w-[468px] border rounded-2xl px-4 py-4'>
 					<div className='space-y-2'>
 						<h1 className='font-semibold text-2xl text-nowrap'>
 							Order summary
 						</h1>
-						<p className='text-xs text-nowrap text-[#A9A9A9]'>
+						<p className='text-xs lg:text-nowrap text-[#A9A9A9]'>
 							Price can change depending on shipping method and taxes of your
 							state.
 						</p>
 					</div>
-					<div>
+					<div className=''>
 						{cartItems.map((product) => {
 							return (
 								<div
 									key={product.id}
-									className='flex space-x-4 py-8 place-items-center px-2'
+									className='lg:flex space-x-4 py-8 place-items-center px-2'
 								>
-									<div className='flex flex-col space-y-3'>
+									<div className='flex flex-col space-y-3 py-6'>
 										<img src={product.image} className='rounded-2xl mb-2' />
 										<button className='flex place-items-center space-x-2'>
 											<CiHeart /> <p>Wishlist</p>
@@ -65,7 +67,7 @@ const Billing = () => {
 											<RiCloseLargeFill /> <p>Remove</p>
 										</button>
 									</div>
-									<div className='space-y-4'>
+									<div className='lg:space-y-4'>
 										<h1 className='font-medium text-xl'>
 											{product.displayName}
 										</h1>
@@ -108,8 +110,8 @@ const Billing = () => {
 							);
 						})}
 					</div>
-					<div className='relative left-0 right-0 -bottom-20'>
-						<div className='flex justify-between'>
+					<div className=' lg:relative static left-0 right-0'>
+						<div className='flex justify-between pt-24 lg:pt-0'>
 							<div>
 								<p>Subtotal:</p>
 								<p>Tax:</p>
