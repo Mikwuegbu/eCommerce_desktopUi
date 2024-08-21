@@ -1,10 +1,13 @@
+import { ChangeEventHandler, EventHandler } from "react";
+
 // authentication button types
 export interface authButton {
 	displayText: string;
 	className: string;
 	children?: React.ReactNode;
-	onClick?: React.EventHandler<React.MouseEvent<HTMLButtonElement>>;
+	btnClick?: EventHandler<React.MouseEvent<HTMLButtonElement>>;
 	disabled?: boolean;
+	type?: "submit" | "reset";
 }
 
 //authentication formInput types
@@ -13,4 +16,5 @@ export interface formAttributes {
 	className: string;
 	placeholder: string;
 	id?: string;
+	inputChange?: ChangeEventHandler<HTMLInputElement>;
 }

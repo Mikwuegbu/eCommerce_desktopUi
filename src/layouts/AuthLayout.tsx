@@ -1,6 +1,7 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { arrowLeft, arrowRight } from "../assets/icons/icons";
 
+
 const AuthLayout = () => {
 	// Making the layout Background Dynamic
 	const location = useLocation();

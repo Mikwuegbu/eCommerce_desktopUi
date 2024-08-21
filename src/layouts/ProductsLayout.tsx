@@ -12,12 +12,13 @@ import { BsHandbagFill } from "react-icons/bs";
 import { MdSportsMartialArts } from "react-icons/md";
 import { IoChatbubble, IoCloseOutline } from "react-icons/io5";
 import { CiSearch, CiUser } from "react-icons/ci";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ExploreContext } from "../utils/context";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { RootState } from "../store/store";
+import { storeType } from "../store/store";
 import { IoIosMenu } from "react-icons/io";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 
 const exploreProducts = [
 	{ id: 1, title: "New in", icon: <FcFlashOn size={22} /> },
@@ -32,19 +33,38 @@ const exploreProducts = [
 const ProductsSharedLayout = () => {
 	const exploreBtn = useContext(ExploreContext);
 	const [isOpen, setIsOpen] = useState<boolean>(false);
+	const { isAuthenticated, } = useSelector((state: storeType) => state.user)
 
 	const toggleMenu = () => {
 		setIsOpen(!isOpen);
 	};
 
 	const cartNumofItems = useSelector(
-		(state: RootState) => state.cart.items.length
+		(state: storeType) => state.cart.items.length
 	);
 
 	const handleClick = (btn: string) => {
 		exploreBtn?.dispatch({ type: btn, payload: btn });
 		setIsOpen(false);
 	};
+
+	useEffect(() => {
+		if (isAuthenticated === true) {
+			toast.success('Successful', {
+				position: "top-right",
+				autoClose: 2000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: "light",
+				transition: Bounce,
+			});
+		}
+	}, [isAuthenticated])
+
+
 
 	return (
 		<div className='flex flex-col space-y-24 relative'>
@@ -98,12 +118,12 @@ const ProductsSharedLayout = () => {
 					)}
 					<div
 						className={`${isOpen ? "pt-2.5 flex absolute pr-8 right-0 space-x-2.5 lg:space-x-6" : "flex space-x-2.5 lg:space-x-6"}`}
-					>
+					><ToastContainer />
 						<Link to='/billing' className='flex space-x-1'>
 							<GiShoppingCart />
 							<p className='text-xs'>{cartNumofItems}</p>
 						</Link>
-						<Link to='/auth/login'>
+						<Link to='/billing'>
 							<CiUser />
 						</Link>
 					</div>

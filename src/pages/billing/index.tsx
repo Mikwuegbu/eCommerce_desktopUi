@@ -4,11 +4,12 @@ import { RiCloseLargeFill } from "react-icons/ri";
 import { renderRating } from "../products/accessories/singleProducts";
 import BillingForm from "../../components/BillingForm";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store/store";
-import { updateItemQuantity } from "../../store";
+import { updateItemQuantity } from "../../store/cartSlice";
+import { storeType } from "../../store/store";
+import { productsType } from "../../types/products";
 
 const Billing = () => {
-	const cartItems = useSelector((state: RootState) => state.cart.items);
+	const cartItems = useSelector((state: storeType) => state.cart.items);
 	const dispatch = useDispatch();
 
 	// -- Handle the quantity Selection
@@ -16,7 +17,7 @@ const Billing = () => {
 		event: React.ChangeEvent<HTMLSelectElement>,
 		productId: number
 	) => {
-		const selectedCartItem = cartItems.find((item) => item.id === productId);
+		const selectedCartItem = cartItems.find((item: productsType) => item.id === productId);
 		const selectedQuantity: number = parseInt(event.target.value);
 		dispatch(
 			updateItemQuantity({
