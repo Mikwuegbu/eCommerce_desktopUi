@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { userType } from "../types/userType";
 
-const userApi = "http://localhost:3000/users";
+const userApi = "https://66c5e8aa134eb8f43496140a.mockapi.io/mock/users/users";
 
 type userCredentials = {
 	email: string;
