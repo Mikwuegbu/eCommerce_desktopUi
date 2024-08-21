@@ -1,6 +1,6 @@
-import FormInput from "./FormInput";
 import { useSelector } from "react-redux";
 import { storeType } from "../store/store";
+import FormInput from "./FormInput";
 
 
 const BillingForm = () => {
@@ -20,8 +20,8 @@ const BillingForm = () => {
 						</div>
 					</div>
 					{/* Form Columns */}
-					<div className='flex justify-between space-x-8'>
-						<div className='w-full space-y-8'>
+					<div className='flex flex-col md:flex-row justify-between md:space-x-8'>
+						<div className=' w-full space-y-8'>
 							<div className='flex flex-col'>
 								<label htmlFor='firstName'>First name</label>
 								<FormInput
@@ -58,7 +58,7 @@ const BillingForm = () => {
 									placeholder='Choose a state or Country'
 								/>
 							</div>
-							<div className='space-x-2 border border-[#D1D1D1] text-nowrap rounded-xl px-4 py-2 flex place-items-center'>
+							<div className='space-x-2 border border-[#D1D1D1] text-nowrap rounded-xl px-4 py-2 md:flex hidden place-items-center '>
 								<input
 									className='w-4 h-4'
 									type='checkbox'
@@ -71,7 +71,7 @@ const BillingForm = () => {
 							</div>
 						</div>
 						<div className='w-full space-y-8'>
-							<div className='flex flex-col'>
+							<div className='flex flex-col mt-10 md:mt-0'>
 								<label htmlFor='lastname'>Last name</label>
 								<FormInput
 									className='border rounded-xl border-[#D1D1D1] py-2 px-4'
@@ -107,6 +107,17 @@ const BillingForm = () => {
 									placeholder='Postal code or Zip'
 								/>
 							</div>
+							<div className='space-x-2 border border-[#D1D1D1] text-nowrap rounded-xl mt-10 px-4 py-2 md:hidden place-items-center '>
+								<input
+									className='w-4 h-4'
+									type='checkbox'
+									name='yes'
+									id='shipping_address'
+								/>
+								<label htmlFor='shipping_address'>
+									Ship to a different address?
+								</label>
+							</div>
 						</div>
 					</div>
 				</form>
@@ -115,7 +126,7 @@ const BillingForm = () => {
 						<h1 className='font-semibold text-2xl'>Billing method</h1>
 						<div className='flex justify-between font-normal text-sm text-[#A9A9A9]'>
 							<p>Please enter your payment method</p>
-							<p>Step 2 of 5</p>
+							<p className="text-nowrap">Step 2 of 5</p>
 						</div>
 					</div>
 					<div className='space-y-4 font-semibold text-sm text-center'>
@@ -124,18 +135,17 @@ const BillingForm = () => {
 								className='w-5 h-5'
 								type='radio'
 								name='yes'
-								id='ship_to_different'
+								id='fedex'
 							/>
 							<label
-								htmlFor='ship_to_different'
-								className='flex space-x-24 place-items-center text-nowrap'
+								htmlFor='fedex'
+								className='text-nowrap md:space-x-24 flex space-x-6'
 							>
-								<p>FedEx</p>
+								<p >FedEx</p>
 								<p className='text-lime-600'>
 									+32 USD
 									<span className='text-black px-2'>Additional price</span>
 								</p>
-								<p>image</p>
 							</label>
 						</div>
 						<div className='space-x-2 border border-[#D1D1D1] rounded-xl px-4 py-2.5 flex place-items-center'>
@@ -143,18 +153,17 @@ const BillingForm = () => {
 								className='w-5 h-5'
 								type='radio'
 								name='yes'
-								id='ship_to_different'
+								id='dhl'
 							/>
 							<label
-								htmlFor='ship_to_different'
-								className='flex space-x-24 place-items-center text-nowrap'
+								htmlFor='dhl'
+								className='flex md:space-x-24 space-x-6 place-items-center text-nowrap'
 							>
 								<p>DHL</p>
 								<p className='text-lime-600'>
 									+15 USD
 									<span className='px-2 text-black'>Additional price</span>
 								</p>
-								<p>image</p>
 							</label>
 						</div>
 					</div>

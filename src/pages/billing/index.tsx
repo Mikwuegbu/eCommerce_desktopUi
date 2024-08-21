@@ -34,11 +34,11 @@ const Billing = () => {
 
 	return (
 		<div className='lg:px-14 px-6 py-16'>
-			<div className='flex flex-col lg:flex-row justify-between md:space-x-8 lg:px-28'>
+			<div className='flex flex-col lg:flex-row justify-between lg:space-x-8 lg:px-28'>
 				<div className='w-full order-2 lg:order-1'>
 					<BillingForm />
 				</div>
-				<div className='order-1 lg:order-2 max-w-[468px] border rounded-2xl px-4 py-4'>
+				<div className='order-1 lg:order-2 lg:min-w-[486px] border rounded-2xl px-4 py-4 lg:h-screen lg:overflow-y-scroll no-scrollbar'>
 					<div className='space-y-2'>
 						<h1 className='font-semibold text-2xl text-nowrap'>
 							Order summary
