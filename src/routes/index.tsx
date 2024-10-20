@@ -12,54 +12,54 @@ import Accessories from "../pages/products/accessories";
 import ErrorPage from "../pages/ErrorPage";
 
 const authRoutes: RouteObject = {
-	path: "/",
-	element: <AuthLayout />,
-	children: [
-		{
-			index: true,
-			element: <CreateAccount />,
-		},
-		{
-			path: "/login",
-			element: <Login />,
-		},
-		{
-			path: "/forgotten",
-			element: <ForgotPassword />,
-		},
-		{
-			path: "/reset",
-			element: <PasswordReset />,
-		},
-	],
+  path: "/",
+  element: <AuthLayout />,
+  children: [
+    {
+      index: true,
+      element: <CreateAccount />,
+    },
+    {
+      path: "/login",
+      element: <Login />,
+    },
+    {
+      path: "/forgotten",
+      element: <ForgotPassword />,
+    },
+    {
+      path: "/reset",
+      element: <PasswordReset />,
+    },
+  ],
 };
 
 const productsRoutes: RouteObject = {
-	path: "/products",
-	element: <ProductsSharedLayout />,
-	children: [
-		{
-			index: true,
-			element: <Product />,
-		},
-		{
-			path: "accessories",
-			element: <Accessories />,
-		},
-		{
-			path: "accessories/:productId",
-			element: <SingleProduct />,
-		},
-		{
-			path: "*",
-			element: <ErrorPage />,
-		},
-	],
+  path: "/products",
+  element: <ProductsSharedLayout />,
+  children: [
+    {
+      index: true,
+      element: <Product />,
+    },
+    {
+      path: "accessories",
+      element: <Accessories />,
+    },
+    {
+      path: "accessories/:productId",
+      element: <SingleProduct />,
+    },
+    {
+      path: "*",
+      element: <ErrorPage />,
+    },
+  ],
 };
 
 const billingRoutes: RouteObject = {
-	path: "/billing",
-	element: <Billing />,
+  path: "/billing",
+  element: <Billing />,
 };
 
 const routes = createBrowserRouter([authRoutes, productsRoutes, billingRoutes]);

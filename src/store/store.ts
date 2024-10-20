@@ -3,14 +3,14 @@ import cartReducer from "./cartSlice";
 import userReducer from "./authSlice";
 
 export const store = configureStore({
-	reducer: {
-		cart: cartReducer,
-		user: userReducer,
-	},
+  reducer: {
+    cart: cartReducer,
+    user: userReducer,
+  },
 });
 
 export type storeType = {
-	cart: ReturnType<typeof cartReducer>;
-	user: ReturnType<typeof userReducer>;
+  cart: ReturnType<typeof cartReducer>;
+  user: ReturnType<typeof userReducer>;
 };
 export type AppDispatch = typeof store.dispatch;
